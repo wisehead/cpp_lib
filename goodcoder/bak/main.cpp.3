@@ -1,0 +1,60 @@
+/*******************************************************************************
+ *      File Name: main.cpp                                               
+ *         Author: Hui Chen. (c) 2015                             
+ *           Mail: chenhui13@baidu.com                                        
+ *   Created Time: 2015/07/31-15:39                                    
+ *	Modified Time: 2015/07/31-15:39                                    
+ *******************************************************************************/
+#include <iostream>
+#include <fstream>
+#include <vector>
+using namespace std;
+const char filename[] = "a.in";
+const char tableDefFile[] = "TableDef.txt";
+
+//------------------------------------------------------------------------------
+class UDT
+{
+public:
+    virtual int parser()=0;
+private:
+    int ele_num;
+    std::vector<string> elements;
+};
+//------------------------------------------------------------------------------
+
+class TableDef
+{
+public:
+    TableDef()
+    {
+        columns.empty();
+    }
+    ~TableDef()
+    {
+    }
+
+    int getTableDef();
+private:
+    //int col_num;
+    std::vector<string> columns; 
+};
+
+int TableDef::getTableDef()
+{
+    ifstream in(tableDefFile);
+    for (string str; getline(in, str); )
+    {
+        cout<<str<<endl;
+        columns.push_back(str);
+    }
+}
+//------------------------------------------------------------------------------
+int main(){
+    //ifstream in(filename);
+    //ofstream out("a.out");
+    TableDef table_def;
+    table_def.getTableDef();
+}
+//-------------------------------------------------------------------------------
+

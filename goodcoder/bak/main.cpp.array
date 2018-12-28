@@ -1,0 +1,233 @@
+/*******************************************************************************
+ *      File Name: main.cpp                                               
+ *         Author: Hui Chen. (c) 2015                             
+ *           Mail: chenhui13@baidu.com                                        
+ *   Created Time: 2015/07/31-15:39                                    
+ *	Modified Time: 2015/07/31-15:39                                    
+ *******************************************************************************/
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <string>
+#include <stdlib.h>
+#include <string.h>
+#include <fnmatch.h>
+using namespace std;
+const char filename[] = "a.in";
+const char tableDefFile[] = "TableDef.txt";
+
+//------------------------------------------------------------------------------
+class UDT
+{
+    public:
+        virtual int parse_word(int i, string str)
+        {
+            printf("in parse_word() of base UDT\n");
+        }
+
+        //private:
+        //    string value;
+};
+
+class UDT_BOOL:public UDT
+{
+    public:
+        virtual int parse_word(int i, string str);
+    private:
+        bool value;
+};
+
+int UDT_BOOL::parse_word(int i, string str)
+{
+    if (!str.compare("TRUE"))
+    {
+        value = true;
+        printf("column %d is UDT_BOOL: %d; ",i,value);
+        return 0;
+    }
+    else if (!str.compare("FALSE"))
+    {
+        value = false;
+        printf("column %d is UDT_BOOL: %d; ",i,value);
+        return 0;
+    }
+    else
+        return -1;
+}
+
+//------------------------------------------------------------------------------
+
+class TableDef
+{
+    public:
+        TableDef()
+        {
+            columns.empty();
+        }
+        ~TableDef()
+        {
+        }
+
+        int getTableDef();
+        int getColCount();
+        int parse_word();
+        int parse_word(int i,string sub);
+    private:
+        //int col_num;
+        std::vector<string> columns; 
+};
+
+int TableDef::getTableDef()
+{
+    ifstream in(tableDefFile);
+    cout<<"TABLE DEFINITION:"<<endl;
+    cout<<"------------------------------"<<endl;
+    for (string str; getline(in, str); )
+    {
+        cout<<str<<endl;
+        columns.push_back(str);
+    }
+    cout<<"------------------------------"<<endl;
+}
+int TableDef::getColCount()
+{
+    return columns.size();
+}
+
+int TableDef::parse_word(int i,string sub)
+{
+    //TODO- use switch
+    string str=columns[i];
+    if(!str.compare("int"))
+    {
+        //return string("%d");
+        int temp = atoi(sub.c_str());
+        printf("column %d is int: %d; ",i,temp);
+    }
+    else if(!str.compare("float"))
+    {
+        //return string("%d");
+        double temp = atof(sub.c_str());
+        printf("column %d is float: %f; ",i,temp);
+    }
+    else if(!str.compare("char*"))
+    {
+        //return string("%d");
+        printf("column %d is string: %s; ",i,sub.c_str());
+    }
+    else if (!str.compare("UDT_BOOL"))
+    {
+        UDT_BOOL udt;
+        if (!udt.parse_word(i, sub))
+            return 0;
+        else
+        {
+            printf("invalid input value!\n");
+            return -1;
+        }
+    }
+    else 
+    {
+        int ret = fnmatch("UDT_*\\[*\\]", str.c_str(), FNM_PATHNAME|FNM_PERIOD);
+        if(0 != ret){
+            cout<<str<<"  "<<ret<<endl;
+            cout<<"This is invalid type, user defined type should be named as UDT_xxx"<<endl;
+            return -1;
+        }           
+        cout<<"OH Yeah!!!!!"<<endl;
+        unsigned int start = 0;
+        unsigned int left_loc = 0;
+        unsigned int right_loc = 0;
+        char left_bracket = '[';
+        char right_bracket = ']';
+        string sub;
+        left_loc = str.find(left_bracket, start );
+        cout<<"left_loc"<<left_loc<<" "<<endl;
+        right_loc = str.find(right_bracket, start );
+        cout<<"right_loc"<<right_loc<<" "<<endl;
+        sub = str.substr(left_loc+1,right_loc - left_loc -1);
+        long num = atol(sub.c_str());
+        if (num <= 0)
+        {
+            printf("The array num is invalid!!\n");
+            return -1;
+        }
+        cout<<"sub is "<<sub<<endl;
+        sub = str.substr(0,left_loc);
+        cout<<"sub is "<<sub<<endl;
+        if (!sub.compare("UDT_BOOL"))
+        {
+            for (int i=0;i<num;i++)
+            {
+                
+            }
+        }
+        else 
+        {
+            printf("Invalid Data Type!!\n");
+            return -1;
+        }
+        for (int i=0;i<num;i++)
+        {
+
+        }
+
+    }
+    /*
+       else
+       {
+       printf("this type is not supported yet!\n");
+       return -1;
+       }
+       */
+}
+
+//------------------------------------------------------------------------------
+int main(){
+    //ifstream in(filename);
+    //ofstream out("a.out");
+    TableDef table_def;
+    table_def.getTableDef();
+    // the fengefu  of the sub-string
+    char tab = ' ';
+    ifstream in(filename);
+    for (string str; getline(in, str); )
+    {
+        cout<<str<<endl;
+        //for(int j=0;j<str.length();j++)
+        //{
+        //    printf("array %d:%x\n",j,str.c_str()[j]);
+        //}
+        unsigned int start=0;
+        unsigned int loc = 0;
+        int i=0;
+        for (;i<table_def.getColCount();i++)
+        {
+            if (i==table_def.getColCount()-1)
+                loc = str.length();
+            else
+                loc = str.find(tab, start );
+            if( loc != string::npos )
+            {
+                string sub = str.substr(start,loc-start);
+                //cout <<start<<" "<<loc<<" Found sub string " << sub << endl;
+                while(str.c_str()[loc]==' ')
+                {
+                    loc++;
+                }
+                start = loc;
+                table_def.parse_word(i,sub);
+                //printf("the type of this word is %s\n",type.c_str() );
+                //cout << "Found Omega at " << loc << endl;
+            }
+            else
+            {
+                cout << "Didn't find sub" << endl;
+            }
+            cout<<endl;
+        }
+    }
+
+}
+//-------------------------------------------------------------------------------
+

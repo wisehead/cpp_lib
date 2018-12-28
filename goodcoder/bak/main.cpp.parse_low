@@ -1,0 +1,330 @@
+/*******************************************************************************
+ *      File Name: main.cpp                                               
+ *         Author: Hui Chen. (c) 2015                             
+ *           Mail: chenhui13@baidu.com                                        
+ *   Created Time: 2015/07/31-15:39                                    
+ *	Modified Time: 2015/07/31-15:39                                    
+ *******************************************************************************/
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include <string>
+#include <stdlib.h>
+#include <string.h>
+#include <fnmatch.h>
+using namespace std;
+const char filename[] = "a.in";
+const char tableDefFile[] = "TableDef.txt";
+char type_arr[][20] = { 
+    {"int"},
+    {"float"},
+    {"char*"},
+    {"UDT_BOOL"}
+};  
+//------------------------------------------------------------------------------
+/*
+   Base Class of User Defined Type, if you want to define a new UDT, please implement
+   the function parse(), and add your UDT name to the array type_arr.
+   */
+class UDT
+{
+    public:
+        virtual int parse(string str)
+        {
+            printf("in parse_column() of base UDT\n");
+        }
+};
+
+class UDT_BOOL:public UDT
+{
+    public:
+        virtual int parse(string str);
+    private:
+        bool value;
+};
+
+int UDT_BOOL::parse(string str)
+{
+    if (!str.compare("TRUE"))
+    {
+        value = true;
+        printf("UDT_BOOL: %d; ",value);
+        return 0;
+    }
+    else if (!str.compare("FALSE"))
+    {
+        value = false;
+        printf("UDT_BOOL: %d; ",value);
+        return 0;
+    }
+    else
+        return -1;
+}
+
+//------------------------------------------------------------------------------
+
+class TableDef
+{
+    public:
+        TableDef()
+        {
+            columns.empty();
+        }
+        ~TableDef()
+        {
+        }
+
+        int getTableDef();
+        int getColCount();
+        int parse_column(string type,string column);
+        int parse_line(string line, int col_count = 0);
+        string get_type(int i);
+        int parse_array(string line, string type, int col_count);
+        int process_int(string column);
+        int process_float(string column);
+        int process_string(string column);
+        int process_UDT_BOOL(string column);
+        int process_array(string def, string column);
+        int parse_low(string line, char tab, int col_count, string type=string(""));
+    private:
+        //int col_num;
+        std::vector<string> columns; 
+};
+
+int TableDef::getTableDef()
+{
+    ifstream in(tableDefFile);
+    cout<<"TABLE DEFINITION:"<<endl;
+    cout<<"------------------------------"<<endl;
+    for (string str; getline(in, str); )
+    {
+        cout<<str<<endl;
+        columns.push_back(str);
+    }
+    cout<<"------------------------------"<<endl;
+}
+int TableDef::getColCount()
+{
+    return columns.size();
+}
+
+bool is_this_type_supported(string type)
+{
+    bool ret = false;
+    static int type_arr_size = sizeof(type_arr) / sizeof(type_arr[0]);
+    for (int i=0; i< type_arr_size; i++)
+    {
+        ret = ret || !type.compare(type_arr[i]);
+        if (ret)
+            return ret;
+    }
+    return ret;
+}
+string TableDef::get_type(int i)
+{
+    string type = columns[i];
+    if (is_this_type_supported(type))
+        return columns[i];
+    // this column is arrary, we need to check the definition format first
+    int ret = fnmatch("*\\[*\\]", type.c_str(), FNM_PATHNAME|FNM_PERIOD);
+    if(0 != ret){
+        //cout<<type<<"  "<<ret<<endl;
+        cout<<"Invalid Data Type!!"<<endl;
+        return NULL;
+    }           
+    //cout<<"OH Yeah!!!!!"<<endl;
+    unsigned int start = 0;
+    unsigned int left_loc = 0;
+    unsigned int right_loc = 0;
+    char left_bracket = '[';
+    char right_bracket = ']';
+    string sub;
+    left_loc = type.find(left_bracket, start );
+    //cout<<"left_loc"<<left_loc<<" "<<endl;
+    right_loc = type.find(right_bracket, start );
+    //cout<<"right_loc"<<right_loc<<" "<<endl;
+    sub = type.substr(left_loc+1,right_loc - left_loc -1);
+    long num = atol(sub.c_str());
+    if (num <= 0)
+    {
+        printf("The array num is invalid!!\n");
+        return NULL;
+    }
+    //cout<<"array count is "<<sub<<endl;
+    sub = type.substr(0,left_loc);
+    //cout<<"type is "<<sub<<endl;
+    //if ( !sub.compare("int") || !sub.compare("float") || !sub.compare("char*") || !sub.compare("UDT_BOOL"))
+    if (!is_this_type_supported(sub))
+    {
+        cout<<"Invalid Data Type!!"<<endl;
+        return NULL;
+    }
+
+    return columns[i];
+}
+
+
+int TableDef::parse_array(string line, string type, int col_count)
+{
+    unsigned int start=0;
+    unsigned int loc = 0;
+    char tab = ':';
+    loc = line.find(tab, start );
+    start = loc + 1;
+    string  array = line.substr(start);
+    tab = ',';
+    parse_low(array, tab, col_count, type);
+}
+
+int TableDef::process_int(string column)
+{
+    int temp = atoi(column.c_str());
+    printf("int: %d; ",temp);
+}
+
+int TableDef::process_float(string column)
+{
+    double temp = atof(column.c_str());
+    printf("float: %f; ",temp);
+}
+
+int TableDef::process_string(string column)
+{
+    printf("string: %s; ",column.c_str());
+}
+
+int TableDef::process_UDT_BOOL(string column)
+{
+    UDT_BOOL udt;
+    if (!udt.parse(column))
+        return 0;
+    else
+    {
+        printf("invalid input value!\n");
+        return -1;
+    }
+}
+
+int TableDef::process_array(string def, string column)
+{
+
+    unsigned int start = 0;
+    unsigned int left_loc = 0;
+    unsigned int right_loc = 0;
+    char left_bracket = '[';
+    char right_bracket = ']';
+    string sub;
+    left_loc = def.find(left_bracket, start );
+    //cout<<"left_loc"<<left_loc<<" "<<endl;
+    right_loc = def.find(right_bracket, start );
+    //cout<<"right_loc"<<right_loc<<" "<<endl;
+    sub = def.substr(left_loc+1,right_loc - left_loc -1);
+    long num = atol(sub.c_str());
+    if (num <= 0)
+    {
+        printf("The array num is invalid!!\n");
+        return -1;
+    }
+    //cout<<"sub is "<<sub<<endl;
+    string type = def.substr(0,left_loc);
+    //cout<<"sub is "<<sub<<endl;
+
+    parse_array(column, type, num);
+}
+
+int TableDef::parse_column(string type, string column)
+{
+    //TODO- use switch
+    if(!type.compare("int"))
+    {
+        process_int(column);
+    }
+    else if(!type.compare("float"))
+    {
+        process_float(column);
+    }
+    else if(!type.compare("char*"))
+    {
+        process_string(column);
+    }
+    else if (!type.compare("UDT_BOOL"))
+    {
+        process_UDT_BOOL(column);
+    }
+    else 
+    {
+        process_array(type, column);
+    }
+    /*
+       else
+       {
+       printf("this type is not supported yet!\n");
+       return -1;
+       }
+       */
+}
+
+//------------------------------------------------------------------------------
+int TableDef::parse_low(string line, char tab, int col_count, string type)
+{
+    bool type_is_null = false;
+    unsigned int start=0;
+    unsigned int loc = 0;
+    int i=0;
+    if (type.empty())
+    {
+        type_is_null = true;    
+    }
+    for (;i<col_count;i++)
+    {
+        if (i==col_count-1)
+            loc = line.length();
+        else
+            loc = line.find(tab, start );
+        if( loc != string::npos )
+        {
+            string sub = line.substr(start,loc-start);
+            //cout <<start<<" "<<loc<<" Found sub string " << sub << endl;
+            start = loc + 1;
+            while(line.c_str()[start]==' ')
+            {
+                start++;
+            }
+            if (type_is_null)
+            {
+                type = get_type(i);
+            }
+            parse_column(type, sub);
+            //printf("the type of this word is %s\n",type.c_str() );
+            //cout << "Found Omega at " << loc << endl;
+        }
+        else
+        {
+            cout << "Didn't find sub" << endl;
+        }     
+        cout<<endl;
+    }
+}
+
+int TableDef::parse_line(string line, int col_count)
+{
+    if (col_count == 0)
+        col_count = getColCount();
+    char tab = ' ';
+
+    parse_low(line, tab, col_count);
+}
+//------------------------------------------------------------------------------
+int main(){
+    TableDef table_def;
+    table_def.getTableDef();
+    ifstream in(filename);
+    for (string line; getline(in, line); )
+    {
+        cout<<line<<endl;
+        table_def.parse_line(line);
+    }
+
+}
+//-------------------------------------------------------------------------------
+

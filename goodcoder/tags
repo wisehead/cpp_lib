@@ -1,0 +1,206 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ARCHITECTURE_ID	CMakeFiles/2.8.12.2/CompilerIdC/CMakeCCompilerId.c	/^#  define ARCHITECTURE_ID /;"	d	file:
+ARCHITECTURE_ID	CMakeFiles/2.8.12.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define ARCHITECTURE_ID /;"	d	file:
+ARCHITECTURE_ID	CMakeFiles/CompilerIdC/CMakeCCompilerId.c	/^#  define ARCHITECTURE_ID /;"	d	file:
+ARCHITECTURE_ID	CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define ARCHITECTURE_ID /;"	d	file:
+BUILT_IN_CHAR_STRING	bak/main.cpp	/^class BUILT_IN_CHAR_STRING:public Base_Type $/;"	c	file:
+BUILT_IN_FLOAT	bak/main.cpp	/^class BUILT_IN_FLOAT:public Base_Type$/;"	c	file:
+BUILT_IN_INT	bak/main.cpp	/^class BUILT_IN_INT:public Base_Type $/;"	c	file:
+BaseType	parser.h	/^class BaseType {$/;"	c	namespace:goodcoder
+Base_Type	bak/main.cpp	/^class Base_Type $/;"	c	file:
+BuiltinCharString	parser.h	/^    BuiltinCharString():_value(0){}  $/;"	f	class:goodcoder::BuiltinCharString
+BuiltinCharString	parser.h	/^class BuiltinCharString:public BaseType {$/;"	c	namespace:goodcoder
+BuiltinFloat	parser.h	/^    BuiltinFloat():_value(0){}$/;"	f	class:goodcoder::BuiltinFloat
+BuiltinFloat	parser.h	/^class BuiltinFloat:public BaseType {$/;"	c	namespace:goodcoder
+BuiltinInt	parser.h	/^    BuiltinInt():_value(0){}$/;"	f	class:goodcoder::BuiltinInt
+BuiltinInt	parser.h	/^class BuiltinInt:public BaseType {$/;"	c	namespace:goodcoder
+CMAKE_BINARY_DIR	Makefile	/^CMAKE_BINARY_DIR = \/home\/chenhui\/goodcoder$/;"	m
+CMAKE_COMMAND	Makefile	/^CMAKE_COMMAND = \/home\/opt\/cmake_2.8.4\/bin\/cmake$/;"	m
+CMAKE_EDIT_COMMAND	Makefile	/^CMAKE_EDIT_COMMAND = \/home\/opt\/cmake_2.8.4\/bin\/ccmake$/;"	m
+CMAKE_SOURCE_DIR	Makefile	/^CMAKE_SOURCE_DIR = \/home\/chenhui\/goodcoder$/;"	m
+COMPILER_ID	CMakeFiles/2.8.12.2/CompilerIdC/CMakeCCompilerId.c	/^#   define COMPILER_ID /;"	d	file:
+COMPILER_ID	CMakeFiles/2.8.12.2/CompilerIdC/CMakeCCompilerId.c	/^#  define COMPILER_ID /;"	d	file:
+COMPILER_ID	CMakeFiles/2.8.12.2/CompilerIdC/CMakeCCompilerId.c	/^# define COMPILER_ID /;"	d	file:
+COMPILER_ID	CMakeFiles/2.8.12.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#   define COMPILER_ID /;"	d	file:
+COMPILER_ID	CMakeFiles/2.8.12.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define COMPILER_ID /;"	d	file:
+COMPILER_ID	CMakeFiles/2.8.12.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define COMPILER_ID /;"	d	file:
+COMPILER_ID	CMakeFiles/CompilerIdC/CMakeCCompilerId.c	/^#  define COMPILER_ID /;"	d	file:
+COMPILER_ID	CMakeFiles/CompilerIdC/CMakeCCompilerId.c	/^# define COMPILER_ID /;"	d	file:
+COMPILER_ID	CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define COMPILER_ID /;"	d	file:
+COMPILER_ID	CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define COMPILER_ID /;"	d	file:
+COMPILER_VERSION_MAJOR	CMakeFiles/2.8.12.2/CompilerIdC/CMakeCCompilerId.c	/^#  define COMPILER_VERSION_MAJOR /;"	d	file:
+COMPILER_VERSION_MAJOR	CMakeFiles/2.8.12.2/CompilerIdC/CMakeCCompilerId.c	/^# define COMPILER_VERSION_MAJOR /;"	d	file:
+COMPILER_VERSION_MAJOR	CMakeFiles/2.8.12.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define COMPILER_VERSION_MAJOR /;"	d	file:
+COMPILER_VERSION_MAJOR	CMakeFiles/2.8.12.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define COMPILER_VERSION_MAJOR /;"	d	file:
+COMPILER_VERSION_MINOR	CMakeFiles/2.8.12.2/CompilerIdC/CMakeCCompilerId.c	/^#  define COMPILER_VERSION_MINOR /;"	d	file:
+COMPILER_VERSION_MINOR	CMakeFiles/2.8.12.2/CompilerIdC/CMakeCCompilerId.c	/^# define COMPILER_VERSION_MINOR /;"	d	file:
+COMPILER_VERSION_MINOR	CMakeFiles/2.8.12.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define COMPILER_VERSION_MINOR /;"	d	file:
+COMPILER_VERSION_MINOR	CMakeFiles/2.8.12.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define COMPILER_VERSION_MINOR /;"	d	file:
+COMPILER_VERSION_PATCH	CMakeFiles/2.8.12.2/CompilerIdC/CMakeCCompilerId.c	/^#   define COMPILER_VERSION_PATCH /;"	d	file:
+COMPILER_VERSION_PATCH	CMakeFiles/2.8.12.2/CompilerIdC/CMakeCCompilerId.c	/^#  define COMPILER_VERSION_PATCH /;"	d	file:
+COMPILER_VERSION_PATCH	CMakeFiles/2.8.12.2/CompilerIdC/CMakeCCompilerId.c	/^# define COMPILER_VERSION_PATCH /;"	d	file:
+COMPILER_VERSION_PATCH	CMakeFiles/2.8.12.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#   define COMPILER_VERSION_PATCH /;"	d	file:
+COMPILER_VERSION_PATCH	CMakeFiles/2.8.12.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define COMPILER_VERSION_PATCH /;"	d	file:
+COMPILER_VERSION_PATCH	CMakeFiles/2.8.12.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define COMPILER_VERSION_PATCH /;"	d	file:
+COMPILER_VERSION_TWEAK	CMakeFiles/2.8.12.2/CompilerIdC/CMakeCCompilerId.c	/^#  define COMPILER_VERSION_TWEAK /;"	d	file:
+COMPILER_VERSION_TWEAK	CMakeFiles/2.8.12.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define COMPILER_VERSION_TWEAK /;"	d	file:
+DEC	CMakeFiles/2.8.12.2/CompilerIdC/CMakeCCompilerId.c	/^#define DEC(/;"	d	file:
+DEC	CMakeFiles/2.8.12.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define DEC(/;"	d	file:
+DISALLOW_COPY_AND_ASSIGN	parser.h	/^#define DISALLOW_COPY_AND_ASSIGN(/;"	d
+Garbo	parser.h	/^    class Garbo {$/;"	c	class:goodcoder::Handler
+HEX	CMakeFiles/2.8.12.2/CompilerIdC/CMakeCCompilerId.c	/^#define HEX(/;"	d	file:
+HEX	CMakeFiles/2.8.12.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define HEX(/;"	d	file:
+Handler	parser.h	/^    Handler():_handler_map(),$/;"	f	class:goodcoder::Handler
+Handler	parser.h	/^class Handler {$/;"	c	namespace:goodcoder
+ID_VOID_MAIN	CMakeFiles/2.8.12.2/CompilerIdC/CMakeCCompilerId.c	/^# define ID_VOID_MAIN$/;"	d	file:
+ID_VOID_MAIN	CMakeFiles/CompilerIdC/CMakeCCompilerId.c	/^# define ID_VOID_MAIN$/;"	d	file:
+MAP_STRING_BASETYPE	parser.h	/^typedef std::map<string, BaseType*> MAP_STRING_BASETYPE; $/;"	t	namespace:goodcoder
+PLATFORM_ID	CMakeFiles/2.8.12.2/CompilerIdC/CMakeCCompilerId.c	/^# define PLATFORM_ID /;"	d	file:
+PLATFORM_ID	CMakeFiles/2.8.12.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define PLATFORM_ID /;"	d	file:
+PLATFORM_ID	CMakeFiles/CompilerIdC/CMakeCCompilerId.c	/^# define PLATFORM_ID /;"	d	file:
+PLATFORM_ID	CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define PLATFORM_ID /;"	d	file:
+Parser	bak/main.cpp	/^        Parser()$/;"	f	class:Parser
+Parser	bak/main.cpp	/^class Parser$/;"	c	file:
+Parser	parser.h	/^    Parser():_table_def() {}$/;"	f	class:goodcoder::Parser
+Parser	parser.h	/^class Parser {$/;"	c	namespace:goodcoder
+RM	Makefile	/^RM = \/home\/opt\/cmake_2.8.4\/bin\/cmake -E remove -f$/;"	m
+SHELL	Makefile	/^SHELL = \/bin\/sh$/;"	m
+SUFFIXES	Makefile	/^SUFFIXES =$/;"	m
+TableDef	bak/main.cpp	/^        TableDef()$/;"	f	class:TableDef
+TableDef	bak/main.cpp	/^class TableDef$/;"	c	file:
+TableDef	parser.h	/^    TableDef():columns() {}$/;"	f	class:goodcoder::TableDef
+TableDef	parser.h	/^class TableDef {$/;"	c	namespace:goodcoder
+UDT	bak/main.cpp	/^class UDT: public Base_Type$/;"	c	file:
+UDT_BOOL	bak/main.cpp	/^class UDT_BOOL:public UDT$/;"	c	file:
+UDT_USER	bak/main.cpp	/^        UDT_USER()$/;"	f	class:UDT_USER
+UDT_USER	bak/main.cpp	/^class UDT_USER:public UDT$/;"	c	file:
+UdtBool	parser.h	/^    UdtBool():_value(false){}$/;"	f	class:goodcoder::UdtBool
+UdtBool	parser.h	/^class UdtBool:public UserDefinedType {$/;"	c	namespace:goodcoder
+UdtUser	parser.h	/^    UdtUser():_userId(0),_name(NULL),_age(0),_money(0) {}$/;"	f	class:goodcoder::UdtUser
+UdtUser	parser.h	/^class UdtUser:public UserDefinedType {$/;"	c	namespace:goodcoder
+UserDefinedType	parser.h	/^class UserDefinedType: public BaseType {$/;"	c	namespace:goodcoder
+_age	parser.h	/^    int _age;$/;"	m	class:goodcoder::UdtUser
+_handler_builtin_char_string	parser.h	/^    BuiltinCharString _handler_builtin_char_string;$/;"	m	class:goodcoder::Handler
+_handler_builtin_float	parser.h	/^    BuiltinFloat _handler_builtin_float;$/;"	m	class:goodcoder::Handler
+_handler_builtin_int	parser.h	/^    BuiltinInt _handler_builtin_int;$/;"	m	class:goodcoder::Handler
+_handler_map	parser.h	/^    MAP_STRING_BASETYPE _handler_map; $/;"	m	class:goodcoder::Handler
+_handler_udt_bool	parser.h	/^    UdtBool _handler_udt_bool;$/;"	m	class:goodcoder::Handler
+_handler_udt_user	parser.h	/^    UdtUser _handler_udt_user;$/;"	m	class:goodcoder::Handler
+_money	parser.h	/^    float _money;$/;"	m	class:goodcoder::UdtUser
+_name	parser.h	/^    char* _name;$/;"	m	class:goodcoder::UdtUser
+_p_instance	parser.h	/^    static Handler * _p_instance;$/;"	m	class:goodcoder::Handler
+_p_instance	parser.h	/^Handler * Handler::_p_instance=NULL;$/;"	m	class:goodcoder::Handler
+_table_def	parser.h	/^    TableDef _table_def;$/;"	m	class:goodcoder::Parser
+_userId	parser.h	/^    int _userId;$/;"	m	class:goodcoder::UdtUser
+_value	parser.h	/^    bool _value;$/;"	m	class:goodcoder::UdtBool
+_value	parser.h	/^    char* _value;$/;"	m	class:goodcoder::BuiltinCharString
+_value	parser.h	/^    float _value;$/;"	m	class:goodcoder::BuiltinFloat
+_value	parser.h	/^    int _value;$/;"	m	class:goodcoder::BuiltinInt
+age	bak/main.cpp	/^        int age;$/;"	m	class:UDT_USER	file:
+check_and_get_array_def	parser.cpp	/^int TableDef::check_and_get_array_def(string arr_str, string* ele_type, int* ele_count) {$/;"	f	class:goodcoder::TableDef
+columns	bak/main.cpp	/^        std::vector<string> columns; $/;"	m	class:TableDef	file:
+columns	parser.h	/^    std::vector<string> columns; $/;"	m	class:goodcoder::TableDef
+filename	bak/main.cpp	/^const char filename[] = "a.in";$/;"	v
+filename	parser.cpp	/^const char filename[] = "a.in";$/;"	v
+gb	parser.h	/^    static Garbo gb;$/;"	m	class:goodcoder::Handler
+getColCount	bak/main.cpp	/^int TableDef::getColCount()$/;"	f	class:TableDef
+getTableDef	bak/main.cpp	/^int TableDef::getTableDef()$/;"	f	class:TableDef
+get_col_count	parser.cpp	/^int TableDef::get_col_count() {$/;"	f	class:goodcoder::TableDef
+get_handler	bak/main.cpp	/^Base_Type* Parser::get_handler(string type)$/;"	f	class:Parser
+get_handler	parser.cpp	/^BaseType* Handler::get_handler(string type) {$/;"	f	class:goodcoder::Handler
+get_instance	parser.h	/^    static Handler * get_instance() {$/;"	f	class:goodcoder::Handler
+get_table_def	bak/main.cpp	/^TableDef& Parser::get_table_def()$/;"	f	class:Parser
+get_table_def	parser.cpp	/^TableDef& Parser::get_table_def() {$/;"	f	class:goodcoder::Parser
+get_type	bak/main.cpp	/^string TableDef::get_type(int i)$/;"	f	class:TableDef
+get_type	parser.cpp	/^string TableDef::get_type(int i) {$/;"	f	class:goodcoder::TableDef
+goodcoder	parser.cpp	/^namespace goodcoder{$/;"	n	file:
+goodcoder	parser.h	/^namespace goodcoder {$/;"	n
+ha_builtin_char_string	bak/main.cpp	/^        BUILT_IN_CHAR_STRING ha_builtin_char_string;$/;"	m	class:Parser	file:
+ha_builtin_float	bak/main.cpp	/^        BUILT_IN_FLOAT ha_builtin_float;$/;"	m	class:Parser	file:
+ha_builtin_int	bak/main.cpp	/^        BUILT_IN_INT ha_builtin_int;$/;"	m	class:Parser	file:
+ha_map	bak/main.cpp	/^        static map<string, Base_Type*> ha_map; $/;"	m	class:Parser	file:
+ha_udt_bool	bak/main.cpp	/^        UDT_BOOL ha_udt_bool;$/;"	m	class:Parser	file:
+ha_udt_user	bak/main.cpp	/^        UDT_USER ha_udt_user;$/;"	m	class:Parser	file:
+info_arch	CMakeFiles/2.8.12.2/CompilerIdC/CMakeCCompilerId.c	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v
+info_arch	CMakeFiles/2.8.12.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v
+info_arch	CMakeFiles/CompilerIdC/CMakeCCompilerId.c	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v
+info_arch	CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v
+info_compiler	CMakeFiles/2.8.12.2/CompilerIdC/CMakeCCompilerId.c	/^char const* info_compiler = "INFO" ":" "compiler[" COMPILER_ID "]";$/;"	v
+info_compiler	CMakeFiles/2.8.12.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_compiler = "INFO" ":" "compiler[" COMPILER_ID "]";$/;"	v
+info_compiler	CMakeFiles/CompilerIdC/CMakeCCompilerId.c	/^char const* info_compiler = "INFO" ":" "compiler[" COMPILER_ID "]";$/;"	v
+info_compiler	CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_compiler = "INFO" ":" "compiler[" COMPILER_ID "]";$/;"	v
+info_platform	CMakeFiles/2.8.12.2/CompilerIdC/CMakeCCompilerId.c	/^char const* info_platform = "INFO" ":" "platform[" PLATFORM_ID "]";$/;"	v
+info_platform	CMakeFiles/2.8.12.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_platform = "INFO" ":" "platform[" PLATFORM_ID "]";$/;"	v
+info_platform	CMakeFiles/CompilerIdC/CMakeCCompilerId.c	/^char const* info_platform = "INFO" ":" "platform[" PLATFORM_ID "]";$/;"	v
+info_platform	CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_platform = "INFO" ":" "platform[" PLATFORM_ID "]";$/;"	v
+info_version	CMakeFiles/2.8.12.2/CompilerIdC/CMakeCCompilerId.c	/^char const info_version[] = {$/;"	v
+info_version	CMakeFiles/2.8.12.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const info_version[] = {$/;"	v
+init	parser.cpp	/^int TableDef::init() {$/;"	f	class:goodcoder::TableDef
+is_this_type_supported	bak/main.cpp	/^bool Parser::is_this_type_supported(string type)$/;"	f	class:Parser
+is_this_type_supported	parser.cpp	/^bool Handler::is_this_type_supported(string type) {$/;"	f	class:goodcoder::Handler
+main	CMakeFiles/2.8.12.2/CompilerIdC/CMakeCCompilerId.c	/^int main(int argc, char* argv[])$/;"	f
+main	CMakeFiles/2.8.12.2/CompilerIdC/CMakeCCompilerId.c	/^void main() {}$/;"	f
+main	CMakeFiles/2.8.12.2/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^int main(int argc, char* argv[])$/;"	f
+main	CMakeFiles/CompilerIdC/CMakeCCompilerId.c	/^int main(int argc, char* argv[])$/;"	f
+main	CMakeFiles/CompilerIdC/CMakeCCompilerId.c	/^void main() {}$/;"	f
+main	CMakeFiles/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^int main(int argc, char* argv[])$/;"	f
+main	bak/main.cpp	/^int main(){$/;"	f
+main	parser.cpp	/^int main() {$/;"	f
+money	bak/main.cpp	/^        float money;$/;"	m	class:UDT_USER	file:
+name	bak/main.cpp	/^        char* name;$/;"	m	class:UDT_USER	file:
+num	bak/parser.cpp.0806.1203.pm	/^num:item1,item2,item3$/;"	l
+parse	bak/main.cpp	/^        virtual int parse(string str)$/;"	f	class:Base_Type
+parse	bak/main.cpp	/^        virtual int parse(string str)$/;"	f	class:UDT
+parse	bak/main.cpp	/^int BUILT_IN_CHAR_STRING::parse(string column)$/;"	f	class:BUILT_IN_CHAR_STRING
+parse	bak/main.cpp	/^int BUILT_IN_FLOAT::parse(string column)$/;"	f	class:BUILT_IN_FLOAT
+parse	bak/main.cpp	/^int BUILT_IN_INT::parse(string column)$/;"	f	class:BUILT_IN_INT
+parse	bak/main.cpp	/^int UDT_BOOL::parse(string str)$/;"	f	class:UDT_BOOL
+parse	bak/main.cpp	/^int UDT_USER::parse(string str)$/;"	f	class:UDT_USER
+parse	parser.cpp	/^int BuiltinCharString::parse(string column) {$/;"	f	class:goodcoder::BuiltinCharString
+parse	parser.cpp	/^int BuiltinFloat::parse(string column) {$/;"	f	class:goodcoder::BuiltinFloat
+parse	parser.cpp	/^int BuiltinInt::parse(string column) {$/;"	f	class:goodcoder::BuiltinInt
+parse	parser.cpp	/^int UdtBool::parse(string str) {$/;"	f	class:goodcoder::UdtBool
+parse	parser.cpp	/^int UdtUser::parse(string str) {$/;"	f	class:goodcoder::UdtUser
+parse	parser.h	/^    virtual int parse(string str) {$/;"	f	class:goodcoder::BaseType
+parse	parser.h	/^    virtual int parse(string str) {$/;"	f	class:goodcoder::UserDefinedType
+parse_array	bak/main.cpp	/^int Parser::parse_array(string def, string arr_str)$/;"	f	class:Parser
+parse_array	bak/parse_arrary.cpp	/^int TableDef::parse_array(string line, string type, int col_count)$/;"	f	class:TableDef
+parse_array	parser.cpp	/^int Parser::parse_array(string def, string arr_str) {$/;"	f	class:goodcoder::Parser
+parse_line	bak/main.cpp	/^int Parser::parse_line(string line, int col_count)$/;"	f	class:Parser
+parse_line	bak/parse_line.cpp	/^int TableDef::parse_line(string line, int col_count)$/;"	f	class:TableDef
+parse_line	parser.cpp	/^int Parser::parse_line(string line) {$/;"	f	class:goodcoder::Parser
+parse_low	bak/main.cpp	/^int Parser::parse_low(string line, char tab, int col_count, string type)$/;"	f	class:Parser
+parse_low	parser.cpp	/^int Parser::parse_low(string line, char tab, int ele_count, string type) {$/;"	f	class:goodcoder::Parser
+private	bak/parser.h.0805.0540.pm	/^    private:$/;"	l
+private	bak/parser.h.0806.1203.pm	/^    private:$/;"	l
+process_array_def	bak/main.cpp	/^int TableDef::process_array_def(string arr_str, string* ele_type, int* ele_count)$/;"	f	class:TableDef
+public	bak/parser.h.0805.0540.pm	/^            public:$/;"	l
+public	bak/parser.h.0805.0540.pm	/^    public:$/;"	l
+public	bak/parser.h.0806.1203.pm	/^            public:$/;"	l
+public	bak/parser.h.0806.1203.pm	/^    public:$/;"	l
+tableDefFile	bak/main.cpp	/^const char tableDefFile[] = "TableDef.txt";$/;"	v
+table_def	bak/main.cpp	/^        TableDef table_def;$/;"	m	class:Parser	file:
+table_def_file	parser.cpp	/^const char table_def_file[] = "TableDef.txt";$/;"	m	namespace:goodcoder	file:
+userId	bak/main.cpp	/^        int userId;$/;"	m	class:UDT_USER	file:
+value	bak/main.cpp	/^        bool value;$/;"	m	class:UDT_BOOL	file:
+value	bak/main.cpp	/^        char* value;$/;"	m	class:BUILT_IN_CHAR_STRING	file:
+value	bak/main.cpp	/^        float value;$/;"	m	class:BUILT_IN_FLOAT	file:
+value	bak/main.cpp	/^        int value;$/;"	m	class:BUILT_IN_INT	file:
+~BaseType	parser.h	/^    virtual ~BaseType(){}$/;"	f	class:goodcoder::BaseType
+~BuiltinCharString	parser.h	/^    virtual ~BuiltinCharString(){$/;"	f	class:goodcoder::BuiltinCharString
+~BuiltinFloat	parser.h	/^    virtual ~BuiltinFloat(){}$/;"	f	class:goodcoder::BuiltinFloat
+~BuiltinInt	parser.h	/^    virtual ~BuiltinInt(){}$/;"	f	class:goodcoder::BuiltinInt
+~Garbo	parser.h	/^            ~Garbo() {$/;"	f	class:goodcoder::Handler::Garbo
+~Parser	bak/main.cpp	/^        ~Parser()$/;"	f	class:Parser
+~Parser	parser.h	/^    ~Parser() {}$/;"	f	class:goodcoder::Parser
+~TableDef	bak/main.cpp	/^        ~TableDef()$/;"	f	class:TableDef
+~TableDef	parser.h	/^    ~TableDef() {}$/;"	f	class:goodcoder::TableDef
+~UDT_USER	bak/main.cpp	/^        ~UDT_USER()$/;"	f	class:UDT_USER
+~UdtBool	parser.h	/^    virtual ~UdtBool(){}$/;"	f	class:goodcoder::UdtBool
+~UdtUser	parser.h	/^    virtual ~UdtUser() {$/;"	f	class:goodcoder::UdtUser
+~UserDefinedType	parser.h	/^    virtual ~UserDefinedType(){}$/;"	f	class:goodcoder::UserDefinedType
