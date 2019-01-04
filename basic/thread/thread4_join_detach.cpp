@@ -20,8 +20,9 @@ void *wait(void *t)
    long tid;
  
    tid = (long)t;
- 
-   sleep(1);
+   int secs = (int)tid % 5;
+   //sleep(1);
+   sleep(secs);
    cout << "Sleeping in thread " << endl;
    cout << "Thread with id : " << tid << "  ...exiting " << endl;
    pthread_exit(NULL);
