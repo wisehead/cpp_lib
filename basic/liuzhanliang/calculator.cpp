@@ -46,38 +46,26 @@ void print_linklist(node *pHead)
 		p = p->next;
 	}
 }
+//trace 用户打印函数栈，debug
 //op 1 : +
 //op -1 : -
-//flag true: 没有运算符号，两个数字连接
-//flag false: 有运算符号
+//pre用于处理无运算符号，数字直接连接的情况。
+//sum: 当前累积的总和。
 void cal(string trace, node *p, int pre, int sum, int op, int k, int& cnt)
 {
-	//cout<<"p:"<<p<<endl;
-	if (!p) 
-	{
-		cout<<"[NULL] trace:"<<trace<<"	p->val:"<<p->val<<"	pre:"<<pre<<"	pre*10+p->val:"<<pre*10 + p->val<<"	k:"<<k<<"	cnt:"<<cnt<<endl;;
-		return;
-	}
 	int sum2 = 0; 
 	if (op == 1)
 		sum2 = sum + pre*10 + p->val; 
 	else if (op == -1)
 		sum2 = sum - (pre*10 + p->val); 
-
 	if (!p->next)
 	{
+		//找到符合条件结果
 		if (sum2 == k)
-		{
-			cout<<"got 1 result."<<endl;
-			cout<<"[YES ] trace:"<<trace<<"	p->val:"<<p->val<<"	op:"<<op<<"	sum:"<<sum<<"	pre:"<<pre<<"	cnt:"<<cnt<<endl;;
 			cnt = 1;
-		}
-		else 
-			cout<<"[NO  ] trace:"<<trace<<"	p->val:"<<p->val<<"	op:"<<op<<"	sum:"<<sum<<"	pre:"<<pre<<"	cnt:"<<cnt<<endl;;
 		return;
 	}
 	int c1 = 0, c2 = 0, c3 = 0;
-	cout<<"[INFO] trace:"<<trace<<"	p->val:"<<p->val<<"	op:"<<op<<"	sum:"<<sum<<"	pre:"<<pre<<"	cnt:"<<cnt<<endl;;
 	cal(trace + to_string(p->val) + "+", p->next, 0, sum2, 1, k, c1);
 	cal(trace + to_string(p->val) + "-", p->next, 0, sum2, -1, k, c2);
 	cal(trace + to_string(p->val), p->next, pre*10 + p->val, sum, op, k, c3);
