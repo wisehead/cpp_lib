@@ -51,7 +51,7 @@ void print_linklist(node *pHead)
 //op -1 : -
 //pre用于处理无运算符号，数字直接连接的情况。
 //sum: 当前累积的总和。
-void cal(string trace, node *p, int pre, int sum, int op, int k, int& cnt)
+void cal(node *p, int pre, int sum, int op, int k, int& cnt)
 {
 	int sum2 = 0; 
 	if (op == 1)
@@ -66,16 +66,19 @@ void cal(string trace, node *p, int pre, int sum, int op, int k, int& cnt)
 		return;
 	}
 	int c1 = 0, c2 = 0, c3 = 0;
-	cal(trace + to_string(p->val) + "+", p->next, 0, sum2, 1, k, c1);
-	cal(trace + to_string(p->val) + "-", p->next, 0, sum2, -1, k, c2);
-	cal(trace + to_string(p->val), p->next, pre*10 + p->val, sum, op, k, c3);
+	// case +
+	cal(p->next, 0, sum2, 1, k, c1);
+	// case -
+	cal(p->next, 0, sum2, -1, k, c2);
+	// case no operation, contact 
+	cal(p->next, pre*10 + p->val, sum, op, k, c3);
 	cnt = c1 + c2 + c3;
 }
 int Calculate(node *pHead, int k)
 {
 	int count = 0;
-	string trace;
-	cal(trace, pHead, 0, 0, 1, k, count);
+	//pre 0, sum 0, op 1 means '+'
+	cal(pHead, 0, 0, 1, k, count);
 	return count;
 }
 
@@ -86,7 +89,6 @@ int main()
 	node *pHead;
     //delete_linklist(&pHead);
     create_linklist(&pHead,9);
-	print_linklist(pHead);
     cout << Calculate(pHead,100) << endl;
     cout << "==========Project2=================" << endl;
     cout << endl;
