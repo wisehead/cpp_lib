@@ -1,13 +1,16 @@
-# 告诉protoc要生成C++ Service基类，如果是java或python，则应分别修改为java_generic_services和py_generic_services
+syntax="proto2";
+package example;
+
 option cc_generic_services = true;
- 
+
 message EchoRequest {
       required string message = 1;
 };
+
 message EchoResponse {
       required string message = 1;
 };
- 
+
 service EchoService {
       rpc Echo(EchoRequest) returns (EchoResponse);
 };
