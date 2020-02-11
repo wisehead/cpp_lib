@@ -65,3 +65,100 @@ int main(int argc, char*argv[])
     RUN_ALL_TESTS();
 }
 ```
+#三、gtest系列之事件机制
+##3.1 原理
+“事件” 本质是框架给你提供了一个机会, 让你能在这样的几个机会来执行你自己定制的代码, 来给测试用例准备/清理数据。gtest提供了多种事件机制，总结一下gtest的事件一共有三种：
+1、TestSuite事件
+需要写一个类，继承testing::Test，然后实现两个静态方法：SetUpTestCase方法在第一个TestCase之前执行；TearDownTestCase方法在最后一个TestCase之后执行。
+2、TestCase事件
+是挂在每个案例执行前后的，需要实现的是SetUp方法和TearDown方法。SetUp方法在每个TestCase之前执行；TearDown方法在每个TestCase之后执行。
+3、全局事件
+要实现全局事件，必须写一个类，继承testing::Environment类，实现里面的SetUp和TearDown方法。SetUp方法在所有案例执行前执行；TearDown方法在所有案例执行后执行。
+
+##3.2 全局事件例子
+例如全局事件可以按照下列方式来使用：
+除了要继承testing::Environment类，还要定义一个该全局环境的一个对象并将该对象添加到全局环境测试中去。
+
+```cpp
+#include <iostream>
+#include <gtest/gtest.h>
+using namespace std;
+
+class GlobalTest: public testing::Environment
+{
+public:
+	virtual void SetUp()
+	{
+		cout<<"SetUp()"<<endl;
+	}
+
+	virtual void TearDown()
+	{
+		cout<<"TearDownp()"<<endl;
+	}
+};
+
+int main(int argc, char*argv[])
+{
+    testing::InitGoogleTest(&argc, argv);
+	testing::Environment* env = new GlobalTest();
+	testing::AddGlobalTestEnvironment(env);
+    return RUN_ALL_TESTS();
+}
+```
+
+##3.3 test fixture例子
+```cpp
+#include <iostream>
+#include <gtest/gtest.h>
+using namespace std;
+
+class TestMap:public testing::Test
+{
+public:
+    //添加日志
+    static void SetUpTestCase()
+    {
+        cout<<"SetUpTestCase"<<endl;
+    }
+    static void TearDownTestCase()
+    {
+        cout<<"TearDownTestCase"<<endl;
+    }
+    virtual void SetUp()   //TEST跑之前会执行SetUp
+    {
+        cout<<"SetUp"<<endl;
+        test_map.insert(make_pair(1,0));
+        test_map.insert(make_pair(2,1));
+        test_map.insert(make_pair(3,2));
+        test_map.insert(make_pair(4,3));
+        test_map.insert(make_pair(5,4));
+    }
+    virtual void TearDown() //TEST跑完之后会执行TearDown
+    {
+        cout<<"TearDown"<<endl;
+        test_map.clear();
+    }
+    map<int,int> test_map;
+};
+
+TEST_F(TestMap,Find)   //此时使用的是TEST_F宏
+{
+    map<int,int>::iterator it=test_map.find(1);
+    ASSERT_NE(it,test_map.end());
+}
+
+TEST_F(TestMap,Size)
+{
+    ASSERT_EQ(test_map.size(),5);
+}
+
+int main(int argc,char *argv[])
+{
+    testing::InitGoogleTest(&argc, argv);//将命令行参数传递给gtest
+    return RUN_ALL_TESTS();   //RUN_ALL_TESTS()运行所有测试案例
+}
+```
+
+![results](./resource/test-fixture.png) {:height="100" width="100"}
+
