@@ -247,4 +247,72 @@ int main(int argc, char*argv[])
 #五、参数化
 当考虑多次要为被测函数传入不同的值的情况时，可以按下面的方式去测试。必须添加一个类，继承testing::TestWithParam<T>。其中T就是你需要参数化的参数类型，如下面的案例是int型参数。（官方文档上的案例）
 
+```cpp
+#include<gtest/gtest.h>
+// Returns true iff n is a prime number.
+bool IsPrime(int n)
+{
+    // Trivial case 1: small numbers
+    if (n <= 1) return false;
+    // Trivial case 2: even numbers
+    if (n % 2 == 0) return n == 2;
+    // Now, we have that n is odd and n >= 3.
+    // Try to divide n by every odd number i, starting from 3
+    for (int i = 3; ; i += 2) {
+        // We only have to try i up to the squre root of n
+        if (i > n/i) break;
+        // Now, we have i <= n/i < n.
+        // If n is divisible by i, n is not prime.
+        if (n % i == 0) return false;
+    }
+    // n has no integer factor in the range (1, n), and thus is prime.
+    return true;
+}
+class IsPrimeParamTest : public::testing::TestWithParam<int>{};
+TEST_P(IsPrimeParamTest, HandleTrueReturn)
+{
+ int n =  GetParam();
+ EXPECT_TRUE(IsPrime(n));
+}
+//被测函数须传入多个相关的值
+INSTANTIATE_TEST_CASE_P(TrueReturn, IsPrimeParamTest, testing::Values(3, 5, 11, 23, 17));
+int main(int argc, char **argv)
+{
+    testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
+}
+```
+
+#六、命令行参数
+
+编译生成二进制的测试执行文件之后，直接运行就可以执行单元测试了。但是 Gtest 提供了一些命令行参数来帮助我们更好的使用，下面介绍一下笔者常用的几个命令行参数：
+
+--gtest_list_tests
+
+列出所有需要执行的测试，但是并不执行。
+
+--gtest_filter
+
+对所执行的测试进行过滤，支持通配符
+
+?      单个字符
+
+*      任意字符
+
+-      排除
+
+./test --gtest_filter=SkTest.*-SkTest.insert表示运行所有名为SkTest的案例，排除了SkTest.insert这个案例。
+
+--gtest_repeat=[count]
+
+设置测试重复运行的次数，其中-1表示无限执行。
+
+#七、Gmock 的使用
+上述 Gtest 的使用应该能够满足绝大多数小型项目的测试场景了。但是对于一些涉及数据库交互，网络通信的大型项目的测试场景，我们很难仿真一个真实的环境进行单元测试。所以这时就需要引入** Mock Objects **（模拟对象）来模拟程序的一部分来构造测试场景。Mock Object模拟了实际对象的接口，通过一些简单的代码模拟实际对象部分的逻辑，实现起来简单很多。通过 Mock object 的方式可以更好的提升项目的模块化程度，隔离不同的程序逻辑或环境。
+
+至于如何使用 Mock Object 呢？这里要引出本章的主角 Gmock 了，接下来笔者将编写一个简要的 Mock对象并进行单元测试，来展示一下 GMock 的用法。这里我们用 Gmock 模拟一个 kv 存储引擎，并运行一些简单的测试逻辑。
+
+
+
+
 
