@@ -34,7 +34,56 @@ ASSERT_系列：
 > 
 > 
 
-##2.2 一个例子
+##2.2 详细用法
+###（1）布尔值检查
+
+|  Fatal assertion   | Nonfatal assertion  | Verifies |
+|  ----  | ----  | ---- |
+| ASSERT_TRUE(condition);  | EXPECT_TRUE(condition); | condition is true |
+| ASSERT_FALSE(condition);  | EXPECT_FALSE(condition); | condition is false |
+
+
+### （2）数值型数据检查
+|  Fatal assertion   | Nonfatal assertion  | Verifies |
+|  ----  | ----  | ---- |
+| ASSERT_EQ(expected, actual); | EXPECT_EQ(expected, actual); | expected == actual |
+| ASSERT_NE(val1, val2);  | EXPECT_NE(val1, val2); | val1 != val2 |
+| ASSERT_LT(val1, val2);  | EXPECT_LT(val1, val2);  | val1 < val2 |
+| ASSERT_LE(val1, val2);  | EXPECT_LE(val1, val2); | val1 <= val2 |
+| ASSERT_GT(val1, val2);  | EXPECT_GT(val1, val2);  | val1 > val2 |
+| ASSERT_GE(val1, val2);  | EXPECT_GE(val1, val2);  | val1 >= val2 |
+
+###（3）字符串比较
+|  Fatal assertion   | Nonfatal assertion  | Verifies |
+|  ----  | ----  | ---- |
+|  ASSERT_STREQ(expected_str, actual_str);  | EXPECT_STREQ(expected_str, actual_str); | 两个C字符串有相同的内容 |
+|  ASSERT_STRNE(str1, str2);  | EXPECT_STRNE(str1, str2); | 两个C字符串有不同的内容 |
+|  ASSERT_STRCASEEQ(expected_str, actual_str);  | EXPECT_STRCASEEQ(expected_str, actual_str);  | 两个C字符串有相同的内容，忽略大小写 |
+|  ASSERT_STRCASENE(str1, str2);  | EXPECT_STRCASENE(str1, str2);  | 两个C字符串有不同的内容，忽略大小写 |
+
+###（4）异常检查
+|  Fatal assertion   | Nonfatal assertion  | Verifies |
+|  ----  | ----  | ---- |
+|  ASSERT_THROW(statement, exception_type); | EXPECT_THROW(statement, exception_type);  | statement throws an exception of the given type |
+|  ASSERT_ANY_THROW(statement);  | EXPECT_ANY_THROW(statement);  | statement throws an exception of any type |
+|  ASSERT_NO_THROW(statement);  | EXPECT_NO_THROW(statement);  | statement doesn't throw any exception |
+
+###（5）浮点型检查
+|  Fatal assertion   | Nonfatal assertion  | Verifies |
+|  ----  | ----  | ---- |
+|  ASSERT_FLOAT_EQ(expected, actual);  | EXPECT_FLOAT_EQ(expected, actual);  | the two float values are almost equal |
+|  ASSERT_DOUBLE_EQ(expected, actual);  | EXPECT_DOUBLE_EQ(expected, actual);  | the two double values are almost equal |
+
+
+对相近的两个数比较：
+
+|  Fatal assertion   | Nonfatal assertion  | Verifies |
+|  ----  | ----  | ---- |
+|  ASSERT_NEAR(val1, val2, abs_error);  | EXPECT_NEAR(val1, val2, abs_error);  | the difference between val1 and val2 doesn't exceed the given absolute error |
+
+###（6）此外还有类型检查、谓词检查等
+
+##2.3 一个例子
 
 ```cpp
 #include<iostream>
