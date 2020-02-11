@@ -25,9 +25,9 @@ int Abs(int x)
 
 TEST(IsAbsTest,HandlerTrueReturn)
 {
-    ASSERT_TRUE(Abs(1) == 1) << "Abs(1)=1";  //ASSERT_TRUE�ڴ�����true,operator<<���һЩ�Զ������Ϣ
+    ASSERT_TRUE(Abs(1) == 1) << "Abs(1)=1";  
     ASSERT_TRUE(Abs(-1) == 1) << "Abs(-1)=1";
-    ASSERT_FALSE(Abs(-2) == -2);  //�ڴ�����false
+    ASSERT_FALSE(Abs(-2) == -2);  
     ASSERT_EQ(Abs(1),Abs(-1));
     ASSERT_NE(Abs(-1),0);
     ASSERT_LT(Abs(-1),2);

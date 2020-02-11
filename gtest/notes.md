@@ -162,3 +162,35 @@ int main(int argc,char *argv[])
 
 ![results](./resource/test-fixture.png) {:height="100" width="100"}
 
+#四、gtest系列之死亡测试
+这里的”死亡”指的是程序的奔溃。通常在测试的过程中，我们需要考虑各种各样的输入，有的输入可能直接导致程序奔溃，这个时候我们就要检查程序是否按照预期的方式挂掉，这也就是所谓的”死亡测试”。
+死亡测试所用到的宏：
+
+> 1>、ASSERT_DEATH(参数1，参数2)，程序挂了并且错误信息和参数2匹配，此时认为测试通过。如果参数2为空字符串，则只需要看程序挂没挂即可。
+> 2>、ASSERT_EXIT(参数1，参数2，参数3)，语句停止并且错误信息和被提前给的信息匹配。
+
+下面我们再来做一个测试实例，测试当程序出问题时候死亡测试如何使用？
+
+```cpp
+#include <iostream>
+using namespace std;
+#include <gtest/gtest.h>
+
+int func()
+{
+	int *ptr = NULL;
+	*ptr = 100;
+	return 0;
+}
+
+TEST(FuncDeathTest, Nullptr)
+{
+	ASSERT_DEATH(func(), "");
+}
+
+int main(int argc, char*argv[])
+{
+    testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
+}
+```
