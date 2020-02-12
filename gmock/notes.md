@@ -717,3 +717,144 @@ int main(int argc, char** argv) {
 > isUseAlipay: 1
 
 从这个结果验证出我们传入的Query信息是对的，成功Mock!
+
+##3.2 现实中的例子
+就如我之前所说的，上述的那个例子是我改过的，现实项目中哪有这么理想的结构（特别对于那些从来没有Develop for Debug思想的同学）。
+因此我们来看看上述这个例子中实际的代码：其实只有IAPIProviderInterface.h不同，它定义了一个模版函数，用于统一各种类型的接口： IAPIProviderInterface.h 真正的IAPIProviderInterface.h，有一个模版函数
+
+###3.2.1 IAPIProviderInterface.h
+
+```cpp
+#ifndef IAPIPROVIDERINTERFACE_H_
+#define IAPIPROVIDERINTERFACE_H_
+ 
+#include <boost/cstdint.hpp>
+#include <iostream>
+ 
+#include "IBaseInterface.h"
+#include "IParameterInterface.h"
+#include "VariantField.h"
+ 
+namespace seamless {
+ 
+class IAPIProviderInterface: public IBaseInterface {
+public:
+        IAPIProviderInterface() {}
+        virtual ~IAPIProviderInterface() {}
+ 
+public:
+        virtual int32_t queryInterface(IBaseInterface*& pInterface) = 0;
+ 
+        template<typename InterfaceType>
+        InterfaceType* getInterface() {
+                IBaseInterface* pInterface = NULL;
+                if (queryInterface(pInterface)) {
+                        std::cerr << "Query Interface failed" << std::endl;
+                }
+                return static_cast<InterfaceType* >(pInterface);
+        }
+};
+ 
+}
+ 
+#endif // IAPIPROVIDERINTERFACE_H_
+```
+
+###3.2.2 Rank.cc
+Rank.cc 既然IAPIProviderInterface.h改了，那Rank.cc中对它的调用其实也不是之前那样的。不过其实也就差一行代码：
+
+```cpp
+	  //IParameterInterface* iParameter = iAPIProvider->getParameterInterface();
+        IParameterInterface* iParameter = iAPIProvider->getInterface<IParameterInterface>();
+```
+
+###3.2.3 IAPIProviderInterface.h Mock版
+因为目前版本（1.5版本）的Google Mock还不支持模版函数，因此我们无法Mock IAPIProviderInterface中的getInterface，那我们现在怎么办？
+如果你想做得比较完美的话我暂时也没想出办法，我现在能够想出的办法也只能这样：IAPIProviderInterface.h 修改其中的getInterface，让它根据模版类型，如果是IParameterInterface或者MockIParameterInterface则就返回一个MockIParameterInterface的对象
+
+```cpp
+#ifndef IAPIPROVIDERINTERFACE_H_
+#define IAPIPROVIDERINTERFACE_H_
+ 
+#include <boost/cstdint.hpp>
+#include <iostream>
+ 
+#include "IBaseInterface.h"
+#include "IParameterInterface.h"
+#include "VariantField.h"
+ 
+// In order to Mock
+#include <boost/shared_ptr.hpp>
+#include <gmock/gmock.h>
+#include "MockIParameterInterface.h"
+ 
+namespace seamless {
+ 
+class IAPIProviderInterface: public IBaseInterface {
+public:
+        IAPIProviderInterface() {}
+        virtual ~IAPIProviderInterface() {}
+ 
+public:
+        virtual int32_t queryInterface(IBaseInterface*& pInterface) = 0;
+ 
+        template<typename InterfaceType>
+        InterfaceType* getInterface() {
+                IBaseInterface* pInterface = NULL;
+                if (queryInterface(pInterface) == 0) {
+                        std::cerr << "Query Interface failed" << std::endl;
+                }
+ 
+                // In order to Mock
+                if ((typeid(InterfaceType) == typeid(IParameterInterface)) ||
+                        (typeid(InterfaceType) == typeid(MockIParameterInterface))) {
+                        using namespace ::testing;
+                        MockIParameterInterface* iParameter = new MockIParameterInterface;
+                        boost::shared_ptr<VariantField> retailWholesaleValue(new VariantField);
+                        retailWholesaleValue->strVal = "0";
+ 
+                        boost::shared_ptr<VariantField> defaultValue(new VariantField);
+                        defaultValue->strVal = "9";
+ 
+                        EXPECT_CALL(*iParameter, getParameter(_, _)).Times(AtLeast(1)).
+                                WillOnce(DoAll(SetArgumentPointee<1>(*retailWholesaleValue), Return(1))).
+                                WillRepeatedly(DoAll(SetArgumentPointee<1>(*defaultValue), Return(1)));
+                        return static_cast<InterfaceType* >(iParameter);
+                }
+                // end of mock
+ 
+                return static_cast<InterfaceType* >(pInterface);
+        }
+};
+ 
+}
+ 
+#endif // IAPIPROVIDERINTERFACE_H_
+```
+
+第33~49行，判断传入的模版函数的类型，然后定义相应的行为，最后返回一个MockIParameterInterface对象
+
+###3.2.4 tester.cc
+
+```cpp
+int main(int argc, char** argv) {
+        ::testing::InitGoogleMock(&argc, argv);
+ 
+        MockIAPIProviderInterface* iAPIProvider = new MockIAPIProviderInterface;
+ 
+        InSequence dummy;
+        EXPECT_CALL(*iAPIProvider, queryInterface(_)).Times(AtLeast(1)).
+                WillRepeatedly(Return(1));
+ 
+        Rank rank;
+        rank.processQuery(iAPIProvider);
+ 
+        delete iAPIProvider;
+ 
+        return EXIT_SUCCESS;
+}
+```
+
+这里的调用就相对简单了，只要一个MockIAPIProviderInterface就可以了。
+
+#四、Google Mock Cookbook
