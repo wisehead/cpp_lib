@@ -858,3 +858,81 @@ int main(int argc, char** argv) {
 这里的调用就相对简单了，只要一个MockIAPIProviderInterface就可以了。
 
 #四、Google Mock Cookbook
+##4.1 Mock protected、private方法
+Google Mock也可以模拟protected和private方法，比较神奇啊（其实从这点上也可以看出，Mock类不是简单地继承原本的接口，然后自己把它提供的方法实现;Mock类其实就等于原本的接口）。
+对protected和private方法的Mock和public基本类似，只不过在Mock类中需要将这些方法设置成public。
+Foo.h 带private方法的接口
+
+```cpp
+class Foo {
+private:
+        virtual void setValue(int value) {};
+ 
+public:
+        int value;
+};
+```
+
+MockFoo.h
+
+```cpp
+class MockFoo: public Foo {
+public:
+        MOCK_METHOD1(setValue, void(int value));
+};
+```
+
+##4.2 Mock 模版类（Template Class）
+Google Mock可以Mock模版类，只要在宏MOCK*的后面加上T。
+还是类似上述那个例子：
+Foo.h 改成模版类
+
+```cpp
+template <typename T>
+class Foo {
+public:
+        virtual void setValue(int value) {};
+ 
+public:
+        int value;
+};
+```
+
+MockFoo.h
+
+```cpp
+template <typename T>
+class Foo {
+public:
+        virtual void setValue(int value) {};
+ 
+public:
+        int value;
+};
+```
+
+##4.3 Nice Mocks 和 Strict Mocks
+当在调用Mock类的方法时，如果之前没有使用EXPECT_CALL来定义该方法的期望行为时，Google Mock在运行时会给你一些警告信息：
+
+	GMOCK WARNING:
+	Uninteresting mock function call – returning default value.
+	Function call: setValue(1)
+	Returns: 0
+	Stack trace
+对于这种情况，可以使用NiceMock来避免:
+
+        // MockFoo mockFoo;
+        NiceMock<MockFoo> mockFoo;
+使用NiceMock来替代之前的MockFoo。
+
+当然，另外还有一种办法，就是使用StrictMock来将这些调用都标为失败：
+
+StrictMock<MockFoo> mockFoo;
+这时得到的结果：
+
+> unknown file: Failure
+> Uninteresting mock function call – returning default value.
+> Function call: setValue(1)
+> Returns: 0
+ 
+
