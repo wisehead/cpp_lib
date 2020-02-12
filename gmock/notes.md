@@ -335,3 +335,61 @@ Not(m) |	argument 不与匹配器m匹配
 >EXPECT_CALL(foo, DoThat(Not(HasSubstr("blah")), NULL));
 
 第一个参数不包含“blah”这个子串
+
+##2.5 基数（Cardinalities）
+基数用于Times()中来指定模拟函数将被调用多少次|
+
+| 操作符 | 备注 | 
+| ---- | ---- | 
+AnyNumber() |	函数可以被调用任意次.
+AtLeast(n) |	预计至少调用n次.
+AtMost(n) |	预计至多调用n次.
+Between(m, n) |	预计调用次数在m和n(包括n)之间.
+Exactly(n) 或 n |	预计精确调用n次. 特别是, 当n为0时,函数应该永远不被调用.
+
+##2.6 行为（Actions）
+Actions（行为）用于指定Mock类的方法所期望模拟的行为：比如返回什么样的值、对引用、指针赋上怎么样个值，等等。 值的返回
+
+| 操作符 | 备注 | 
+| ---- | ---- | 
+Return()	| 让Mock方法返回一个void结果
+Return(value) |	返回值value
+ReturnNull() |	返回一个NULL指针
+ReturnRef(variable) |	返回variable的引用.
+ReturnPointee(ptr) |	返回一个指向ptr的指针
+
+###2.6.1 另一面的作用（Side Effects）
+| 操作符 | 备注 | 
+| ---- | ---- | 
+Assign(&variable, value) |	将value分配给variable
+###2.6.2 使用函数或者函数对象（Functor）作为行为
+| 操作符 | 备注 | 
+| ---- | ---- | 
+Invoke(f)	 | 使用模拟函数的参数调用f, 这里的f可以是全局/静态函数或函数对象.
+Invoke(object_pointer, &class::method) |	使用模拟函数的参数调用object_pointer对象的mothod方法.
+
+###2.6.3 复合动作
+| 操作符 | 备注 | 
+| ---- | ---- | 
+DoAll(a1, a2, …, an) |	每次发动时执行a1到an的所有动作.
+IgnoreResult(a) |	执行动作a并忽略它的返回值. a不能返回void.
+
+这里我举个例子来解释一下DoAll()的作用，我个人认为这个DoAll()还是挺实用的。例如有一个Mock方法：
+>virtual int getParamter(std::string* name,  std::string* value) = 0
+
+对于这个方法，我这回需要操作的结果是将name指向value的地址，并且得到方法的返回值。
+类似这样的需求，我们就可以这样定义期望过程：
+
+```cpp
+TEST(SimpleTest, F1) {
+    std::string* a = new std::string("yes");
+    std::string* b = new std::string("hello");
+    MockIParameter mockIParameter;
+    EXPECT_CALL(mockIParameter, getParamter(testing::_, testing::_)).Times(1).\
+        WillOnce(testing::DoAll(testing::Assign(&a, b), testing::Return(1)));
+    mockIParameter.getParamter(a, b);
+}
+```
+这时就用上了我们的DoAll()了，它将Assign()和Return()结合起来了。
+
+
