@@ -447,3 +447,273 @@ int main(int argc, char **argv) {
 ```
 
 #三、Mock实践
+下面我从我在工作中参与的项目中选取了一个实际的例子来实践Mock。
+这个例子的背景是用于搜索引擎的：
+
+引擎接收一个查询的Query，比如http://127.0.0.1/search?q=mp3&retailwholesale=0&isuse_alipay=1
+引擎接收到这个Query后，将解析这个Query，将Query的Segment（如q=mp3、retail_wholesale=0放到一个数据结构中）
+引擎会调用另外内部模块具体根据这些Segment来处理相应的业务逻辑。
+由于Google Mock不能Mock模版方法，因此我稍微更改了一下原本的接口，以便演示：
+
+##3.1 我改过的例子
+我们先来看看引擎定义好的接口们：
+VariantField.h 一个联合体，用于保存Query中的Segment的值
+
+###3.1.1 VariantField.h
+
+```cpp
+#ifndef VARIANTFIELD_H_
+#define VARIANTFIELD_H_
+ 
+#include <boost/cstdint.hpp>
+ 
+namespace seamless {
+ 
+union VariantField
+{
+    const char * strVal;
+    int32_t intVal;
+};
+ 
+}  // namespace mlr_isearch_api
+ 
+#endif // VARIANTFIELD_H_
+```
+###3.1.2 IParameterInterface.h 
+IParameterInterface.h 提供一个接口，用于得到Query中的各个Segment的值
+
+```cpp
+#ifndef IPARAMETERINTERFACE_H_
+#define IPARAMETERINTERFACE_H_
+ 
+#include <boost/cstdint.hpp>
+ 
+#include "VariantField.h"
+ 
+namespace seamless {
+ 
+class IParameterInterface {
+public:
+        virtual ~IParameterInterface() {};
+ 
+public:
+        virtual int32_t getParameter(const char* name,  VariantField*& value) = 0;
+};
+ 
+}  // namespace
+ 
+#endif // IPARAMETERINTERFACE_H_
+```
+
+###3.1.3 IAPIProviderInterface.h 
+IAPIProviderInterface.h 一个统一的外部接口
+
+```cpp
+#ifndef IAPIPROVIDERINTERFACE_H_
+#define IAPIPROVIDERINTERFACE_H_
+ 
+#include <boost/cstdint.hpp>
+ 
+#include "IParameterInterface.h"
+#include "VariantField.h"
+ 
+namespace seamless {
+ 
+class IAPIProviderInterface {
+public:
+        IAPIProviderInterface() {}
+        virtual ~IAPIProviderInterface() {}
+ 
+public:
+        virtual IParameterInterface* getParameterInterface() = 0;
+};
+ 
+}
+ 
+#endif // IAPIPROVIDERINTERFACE_H_
+```
+
+###3.1.4 Rank.h 
+引擎定义好的接口就以上三个，下面是引擎中的一个模块用于根据Query中的Segment接合业务处理的。Rank.h 头文件
+
+```cpp
+#ifndef RANK_H_
+#define RANK_H_
+ 
+#include "IAPIProviderInterface.h"
+ 
+namespace seamless {
+ 
+class Rank {
+public:
+        virtual ~Rank() {}
+ 
+public:
+        void processQuery(IAPIProviderInterface* iAPIProvider);
+};
+ 
+}  // namespace seamless
+ 
+#endif // RANK_H_
+```
+
+###3.1.5 Rank.cc 实现
+
+```cpp
+#include <cstdlib>
+#include <cstring>
+#include <iostream>
+#include <string>
+#include "IAPIProviderInterface.h"
+#include "IParameterInterface.h"
+#include "VariantField.h"
+ 
+#include "Rank.h"
+ 
+using namespace seamless;
+using namespace std;
+ 
+namespace seamless {
+ 
+void Rank::processQuery(IAPIProviderInterface* iAPIProvider) {
+        IParameterInterface* iParameter = iAPIProvider->getParameterInterface();
+        if (!iParameter) {
+                cerr << "iParameter is NULL" << endl;
+                return;
+        }
+ 
+        int32_t isRetailWholesale = 0;
+        int32_t isUseAlipay = 0;
+ 
+        VariantField* value = new VariantField;
+ 
+        iParameter->getParameter("retail_wholesale", value);
+        isRetailWholesale = (strcmp(value->strVal, "0")) ? 1 : 0;
+ 
+        iParameter->getParameter("is_use_alipay", value);
+        isUseAlipay = (strcmp(value->strVal, "0")) ? 1 : 0;
+ 
+        cout << "isRetailWholesale:\t" << isRetailWholesale << endl;
+        cout << "isUseAlipay:\t" << isUseAlipay << endl;
+ 
+        delete value;
+        delete iParameter;
+}
+ 
+}  // namespace seamless
+```
+
+* 从上面的例子中可以看出，引擎会传入一个IAPIProviderInterface对象，这个对象调用getParameterInterface()方法来得到Query中的Segment。
+* 因此，我们需要Mock的对象也比较清楚了，就是要模拟引擎将Query的Segment传给这个模块。其实就是让=模拟iParameter->getParameter方法：我想让它返回什么样的值就返回什么样的值.
+
+###3.1.6 MockIParameterInterface.h
+下面我们开始Mock了：
+MockIParameterInterface.h 模拟模拟IParameterInterface类
+
+```cpp
+#ifndef MOCKIPARAMETERINTERFACE_H_
+#define MOCKIPARAMETERINTERFACE_H_
+ 
+#include <boost/cstdint.hpp>
+#include <gmock/gmock.h>
+ 
+#include "IParameterInterface.h"
+#include "VariantField.h"
+ 
+namespace seamless {
+ 
+class MockIParameterInterface: public IParameterInterface {
+public:
+        MOCK_METHOD2(getParameter, int32_t(const char* name,  VariantField*& value));
+};
+ 
+}  // namespace seamless
+ 
+#endif // MOCKIPARAMETERINTERFACE_H_
+```
+
+###3.1.7 MockIAPIProviderInterface.h 模拟IAPIProviderInterface类
+
+```cpp
+#ifndef MOCKIAPIPROVIDERINTERFACE_H_
+#define MOCKIAPIPROVIDERINTERFACE_H_
+ 
+#include <gmock/gmock.h>
+ 
+#include "IAPIProviderInterface.h"
+#include "IParameterInterface.h"
+ 
+namespace seamless {
+ 
+class MockIAPIProviderInterface: public IAPIProviderInterface{
+public:
+        MOCK_METHOD0(getParameterInterface, IParameterInterface*());
+};
+ 
+}  // namespace seamless
+ 
+#endif // MOCKIAPIPROVIDERINTERFACE_H_
+```
+
+###3.1.8 tester.cc 
+tester.cc 一个测试程序，试试我们的Mock成果
+
+```cpp
+#include <boost/cstdint.hpp>
+#include <boost/shared_ptr.hpp>
+#include <cstdlib>
+#include <gmock/gmock.h>
+ 
+#include "MockIAPIProviderInterface.h"
+#include "MockIParameterInterface.h"
+#include "Rank.h"
+ 
+using namespace seamless;
+using namespace std;
+ 
+using ::testing::_;
+using ::testing::AtLeast;
+using ::testing::DoAll;
+using ::testing::Return;
+using ::testing::SetArgumentPointee;
+ 
+int main(int argc, char** argv) {
+        ::testing::InitGoogleMock(&argc, argv);
+ 
+        MockIAPIProviderInterface* iAPIProvider = new MockIAPIProviderInterface;
+        MockIParameterInterface* iParameter = new MockIParameterInterface;
+ 
+        EXPECT_CALL(*iAPIProvider, getParameterInterface()).Times(AtLeast(1)).
+                WillRepeatedly(Return(iParameter));
+ 
+        boost::shared_ptr<VariantField> retailWholesaleValue(new VariantField);
+        retailWholesaleValue->strVal = "0";
+ 
+        boost::shared_ptr<VariantField> defaultValue(new VariantField);
+        defaultValue->strVal = "9";
+ 
+        EXPECT_CALL(*iParameter, getParameter(_, _)).Times(AtLeast(1)).
+                WillOnce(DoAll(SetArgumentPointee<1>(*retailWholesaleValue), Return(1))).
+                WillRepeatedly(DoAll(SetArgumentPointee<1>(*defaultValue), Return(1)));
+ 
+        Rank rank;
+        rank.processQuery(iAPIProvider);
+ 
+        delete iAPIProvider;
+ 
+        return EXIT_SUCCESS;
+}
+```
+
+* 第26行，定义一个执行顺序，因此在之前的Rank.cc中，是先调用iAPIProvider>getParameterInterface，然后再调用iParameter>getParameter，因此我们在下面会先定义MockIAPIProviderInterface.getParameterInterface的期望行为，然后再是其他的。
+* 第27~28行，定义MockIAPIProviderInterface.getParameterInterface的的行为：程序至少被调用一次（Times(AtLeast(1))），每次调用都返回一个iParameter（即MockIParameterInterface*的对象）。
+* 第30~34行，我自己假设了一些Query的Segment的值。即我想达到的效果是Query类似http://127.0.0.1/search?retailwholesale=0&isuse_alipay=9。
+* 第36~38行，我们定义MockIParameterInterface.getParameter的期望行为：这个方法至少被调用一次;第一次被调用时返回1并将第一个形参指向retailWholesaleValue;后续几次被调用时返回1，并指向defaultValue。
+* 第51行，运行Rank类下的processQuery方法。
+
+看看我们的运行成果：
+
+> isRetailWholesale: 0
+> isUseAlipay: 1
+
+从这个结果验证出我们传入的Query信息是对的，成功Mock!
