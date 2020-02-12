@@ -1,0 +1,33 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+AttachShared	test/fault_wrapper.h	/^    AttachShared(const char* func_name, void* func)$/;"	f	class:AttachShared
+AttachShared	test/fault_wrapper.h	/^class AttachShared {$/;"	c
+AttachStatic	test/fault_wrapper.h	/^    AttachStatic(const char* func_name, void* func)$/;"	f	class:AttachStatic
+AttachStatic	test/fault_wrapper.h	/^class AttachStatic {$/;"	c
+Disable	test/fault_wrapper.h	/^    int Disable() {$/;"	f	class:AttachShared
+Disable	test/fault_wrapper.h	/^    int Disable() {$/;"	f	class:AttachStatic
+Enable	test/fault_wrapper.h	/^    int Enable(int err, void* param = nullptr) {$/;"	f	class:AttachShared
+Enable	test/fault_wrapper.h	/^    int Enable(int err, void* param = nullptr) {$/;"	f	class:AttachStatic
+My_class	my_code_to_be_tested.h	/^class My_class {$/;"	c
+My_code_tests	test/test_my_code.cpp	/^class My_code_tests : public ::testing::Test {$/;"	c	file:
+SetUp	test/test_my_code.cpp	/^        void SetUp() {$/;"	f	class:My_code_tests
+TEST_F	test/test_my_code.cpp	/^TEST_F(My_code_tests, test1) {$/;"	f
+TearDown	test/test_my_code.cpp	/^        void TearDown() {$/;"	f	class:My_code_tests
+_MOCK_MY_CODE_H_	test/mock_my_code.h	/^#define _MOCK_MY_CODE_H_$/;"	d
+_MY_CLASS_H_	my_code_to_be_tested.h	/^#define _MY_CLASS_H_$/;"	d
+func_	test/fault_wrapper.h	/^    const void* func_;$/;"	m	class:AttachShared
+func_	test/fault_wrapper.h	/^    const void* func_;$/;"	m	class:AttachStatic
+func_name_	test/fault_wrapper.h	/^    const char* func_name_;$/;"	m	class:AttachShared
+func_name_	test/fault_wrapper.h	/^    const char* func_name_;$/;"	m	class:AttachStatic
+function_to_be_tested	my_code_to_be_tested.cpp	/^int My_class::function_to_be_tested(int a) {$/;"	f	class:My_class
+main	test/test_my_code.cpp	/^int main(int argc, char** argv) {$/;"	f
+mock_my_class_return_num_bigger_than_10	test/mock_my_code.cpp	/^int mock_my_class_return_num_bigger_than_10(My_class *my) {$/;"	f
+mock_my_class_return_num_less_than_10	test/mock_my_code.cpp	/^int mock_my_class_return_num_less_than_10(My_class *my) {$/;"	f
+return_num_bigger_than_10	my_code_to_be_tested.cpp	/^int My_class::return_num_bigger_than_10() {$/;"	f	class:My_class
+return_num_less_than_10	my_code_to_be_tested.cpp	/^int My_class::return_num_less_than_10() {$/;"	f	class:My_class
+~AttachShared	test/fault_wrapper.h	/^    ~AttachShared() {$/;"	f	class:AttachShared
+~AttachStatic	test/fault_wrapper.h	/^    ~AttachStatic() {$/;"	f	class:AttachStatic
