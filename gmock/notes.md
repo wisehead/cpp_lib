@@ -269,3 +269,69 @@ int main(int argc, char** argv) {
 ```
 第22行，让setValue的形参可以传入任意参数
 另外，我在第26~27行故意犯了个错（为了说明上述这些匹配器的作用），我之前明明让setDoubleValues第二个参数得大于等于1,但我实际传入时却传入一个0。这时程序运行时就报错了：
+
+### 2.4.8 成员匹配器
+
+| 操作符 | 备注 | 
+| ---- | ---- | 
+| Field(&class::field, m) | argument.field (或 argument->field, 当argument是一个指针时)与匹配器m匹配, 这里的argument是一个class类的实例.
+| Key(e) | 形参（argument）比较是一个类似map这样的容器，然后argument.first的值等于e
+| Pair(m1, m2) |	形参（argument）必须是一个pair，并且argument.first等于m1，argument.second等于m2.
+| Property(&class::property, m) |	argument.property()(或argument->property(),当argument是一个指针时)与匹配器m匹配, 这里的argument是一个class类的实例.
+
+
+举例说明一下：
+
+```cpp
+TEST(TestField, Simple) {
+        MockFoo mockFoo;
+        Bar bar;
+        EXPECT_CALL(mockFoo, get(Field(&Bar::num, Ge(0)))).Times(1);
+        mockFoo.get(bar);
+}
+ 
+int main(int argc, char** argv) {
+        ::testing::InitGoogleMock(&argc, argv);
+        return RUN_ALL_TESTS();
+}
+```
+
+这里我们使用Google Test来写个测试用例，这样看得比较清楚。
+
+第5行，我们定义了一个Field(&Bar::num, Ge(0))，以说明Bar的成员变量num必须大于等于0。
+上面这个是正确的例子，我们为了说明Field的作用，传入一个bar.num = -1试试。
+
+```cpp
+TEST(TestField, Simple) {
+        MockFoo mockFoo;
+        Bar bar;
+        bar.num = -1;
+        EXPECT_CALL(mockFoo, get(Field(&Bar::num, Ge(0)))).Times(1);
+        mockFoo.get(bar);
+}
+```
+
+###2.4.9 匹配函数或函数对象的返回值
+| 操作符 | 备注 | 
+| ---- | ---- | 
+| ResultOf(f, 	m) |	f(argument) 与匹配器m匹配, 这里的f是一个函数或函数对象.
+
+###2.4.10 指针匹配器
+| 操作符 | 备注 | 
+| ---- | ---- | 
+| Pointee(m) |	argument (不论是智能指针还是原始指针) 指向的值与匹配器m匹配.
+
+###2.4.11 复合匹配器
+| 操作符 | 备注 | 
+| ---- | ---- | 
+AllOf(m1, m2, …, mn) |	argument 匹配所有的匹配器m1到mn
+AnyOf(m1, m2, …, mn) |	argument 至少匹配m1到mn中的一个
+Not(m) |	argument 不与匹配器m匹配
+
+>EXPECT_CALL(foo, DoThis(AllOf(Gt(5), Ne(10))));
+
+传入的参数必须 >5 并且 <= 10 
+
+>EXPECT_CALL(foo, DoThat(Not(HasSubstr("blah")), NULL));
+
+第一个参数不包含“blah”这个子串
