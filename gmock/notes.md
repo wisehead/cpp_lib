@@ -392,4 +392,58 @@ TEST(SimpleTest, F1) {
 ```
 这时就用上了我们的DoAll()了，它将Assign()和Return()结合起来了。
 
+##2.7 序列（Sequences）
+默认时，对于定义要的期望行为是无序（Unordered）的，即当我定义好了如下的期望行为：
 
+        MockFoo mockFoo;
+        EXPECT_CALL(mockFoo, getSize()).WillOnce(Return(1));
+        EXPECT_CALL(mockFoo, getValue()).WillOnce(Return(string("Hello World")));
+对于这样的期望行为的定义，我何时调用mockFoo.getValue()或者何时mockFoo.getSize()都可以的。
+
+但有时候我们需要定义有序的（Ordered）的调用方式，即序列 (Sequences) 指定预期的顺序. 在同一序列里的所有预期调用必须按它们指定的顺序发生; 反之则可以是任意顺序.
+
+```cpp
+using ::testing::Return;
+using ::testing::Sequence;
+ 
+int main(int argc, char **argv) {
+        ::testing::InitGoogleMock(&argc, argv);
+ 
+        Sequence s1, s2;
+        MockFoo mockFoo;
+        EXPECT_CALL(mockFoo, getSize()).InSequence(s1, s2).WillOnce(Return(1));
+        EXPECT_CALL(mockFoo, getValue()).InSequence(s1).WillOnce(Return(
+                string("Hello World!")));
+        cout << "First:\t" << mockFoo.getSize() << endl;
+        cout << "Second:\t" << mockFoo.getValue() << endl;
+ 
+        return EXIT_SUCCESS;
+}
+```
+
+* 首先在第8行建立两个序列：s1、s2。
+* 然后在第11行中，EXPECT_CALL(mockFoo, getSize()).InSequence(s1, s2)说明getSize()的行为优先于s1、s2.
+* 而第12行时，EXPECT_CALL(mockFoo, getValue()).InSequence(s1)说明getValue()的行为在序列s1中。
+
+另外，我们还有一个偷懒的方法，就是不要这么傻乎乎地定义这些个Sequence s1, s2的序列，而根据我定义期望行为（EXPECT_CALL）的顺序而自动地识别调用顺序，这种方式可能更为地通用。
+
+```cpp
+using ::testing::InSequence;
+using ::testing::Return;
+ 
+int main(int argc, char **argv) {
+        ::testing::InitGoogleMock(&argc, argv);
+ 
+        InSequence dummy;
+        MockFoo mockFoo;
+        EXPECT_CALL(mockFoo, getSize()).WillOnce(Return(1));
+        EXPECT_CALL(mockFoo, getValue()).WillOnce(Return(string("Hello World")));
+ 
+        cout << "First:\t" << mockFoo.getSize() << endl;
+        cout << "Second:\t" << mockFoo.getValue() << endl;
+ 
+        return EXIT_SUCCESS;
+}
+```
+
+#三、Mock实践
