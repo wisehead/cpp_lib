@@ -145,3 +145,127 @@ int main(int argc, char** argv) {
 * 第一次被调用时返回100
 * 第2次被调用时返回150
 * 从第3次被调用开始每次都返回200
+
+##2.4 Matcher
+Matcher用于定义Mock类中的方法的形参的值（当然，如果你的方法不需要形参时，可以保持match为空。），它有以下几种类型：（更详细的介绍可以参见Google Mock Wiki上的Matcher介绍）
+###2.4.1 通配符
+| A | B | 
+| ---- | ---- | 
+| _ | 可以代表任意类型 | 
+|A() or An() | 可以是type类型的任意值 | 
+
+这里的_和*A*包括下面的那个匹配符都在Google Mock的*::testing*这个命名空间下，大家要用时需要先引入那个命名空间
+
+###2.4.2 一般比较
+
+| 操作符 | 备注 | 
+| ---- | ---- | 
+| Eq(value) 或者 value | argument == value，method中的形参必须是value | 
+| Ge(value) | argument >= value，method中的形参必须大于等于value | 
+| Gt(value) | argument > value | 
+| Le(value) | argument <= value | 
+| Lt(value) | argument < value |
+| Ne(value) | argument != value |
+| IsNull()	| method的形参必须是NULL指针 |
+| NotNull() | argument is a non-null pointer |
+| Ref(variable) | 形参是variable的引用 |
+| TypedEq(value)	| 形参的类型必须是type类型，而且值必须是value|
+
+###2.4.3 浮点数的比较
+
+| 操作符 | 备注 | 
+| ---- | ---- | 
+| DoubleEq(a_double)	| 形参是一个double类型，比如值近似于a_double，两个NaN是不相等的 |
+| FloatEq(a_float) | 同上，只不过类型是float
+| NanSensitiveDoubleEq(a_double) | 形参是一个double类型，比如值近似于a_double，两个NaN是相等的，这个是用户所希望的方式
+| NanSensitiveFloatEq(a_float) | 同上，只不过形参是float
+
+###2.4.4 字符串匹配
+这里的字符串即可以是C风格的字符串，也可以是C++风格的。
+
+| 操作符 | 备注 | 
+| ---- | ---- | 
+| ContainsRegex(string) | 形参匹配给定的正则表达式
+| EndsWith(suffix) | 形参以suffix截尾
+| HasSubstr(string) |	形参有string这个子串
+| MatchesRegex(string) |	从第一个字符到最后一个字符都完全匹配给定的正则表达式.
+| StartsWith(prefix) |	形参以prefix开始
+| StrCaseEq(string) |	参数等于string，并且忽略大小写
+| StrCaseNe(string) |	参数不是string，并且忽略大小写
+| StrEq(string) |	参数等于string
+| StrNe(string) |	参数不等于string
+
+### 2.4.5 容器的匹配
+很多STL的容器的比较都支持==这样的操作，对于这样的容器可以使用上述的Eq(container)来比较。但如果你想写得更为灵活，可以使用下面的这些容器匹配方法：
+
+| 操作符 | 备注 | 
+| ---- | ---- | 
+| Contains(e)	 | 在method的形参中，只要有其中一个元素等于e
+| Each(e) |	参数各个元素都等于e
+| ElementsAre(e0, e1, …, en) |	形参有n+1的元素，并且挨个匹配
+| ElementsAreArray(array)或者ElementsAreArray(array, count) |	和ElementsAre()类似，除了预期值/匹配器来源于一个C风格数组
+| ContainerEq(container) |	类型Eq(container)，就是输出结果有点不一样，这里输出结果会带上哪些个元素不被包含在另一个容器中
+| Pointwise(m, container)
+
+###2.4.6 MockFoo.h
+上述的一些匹配器都比较简单，我就随便打包举几最简单的例子演示一下吧： 我稍微修改一下之前的Foo.h和MockFoo.h， MockFoo.h 增加了2个方法
+
+```cpp
+#ifndef MOCKFOO_H_
+#define MOCKFOO_H_
+ 
+#include <gmock/gmock.h>
+#include <string>
+#include <vector>
+#include "FooInterface.h"
+ 
+namespace seamless {
+ 
+class MockFoo: public FooInterface {
+public:
+        MOCK_METHOD0(getArbitraryString, std::string());
+        MOCK_METHOD1(setValue, void(std::string& value));
+        MOCK_METHOD2(setDoubleValues, void(int x, int y));
+};
+ 
+}  // namespace seamless
+ 
+#endif // MOCKFOO_H_
+```
+
+###2.4.7 FooMain.h
+
+```cpp
+#include <cstdlib>
+#include <gmock/gmock.h>
+#include <iostream>
+#include <string>
+ 
+#include "MockFoo.h"
+ 
+using namespace seamless;
+using namespace std;
+ 
+using ::testing::Assign;
+using ::testing::Eq;
+using ::testing::Ge;
+using ::testing::Return;
+ 
+int main(int argc, char** argv) {
+        ::testing::InitGoogleMock(&argc, argv);
+ 
+        string value = "Hello World!";
+        MockFoo mockFoo;
+ 
+        EXPECT_CALL(mockFoo, setValue(testing::_));
+        mockFoo.setValue(value);
+ 
+        // 这里我故意犯错
+        EXPECT_CALL(mockFoo, setDoubleValues(Eq(1), Ge(1)));
+        mockFoo.setDoubleValues(1, 0);
+ 
+        return EXIT_SUCCESS;
+}
+```
+第22行，让setValue的形参可以传入任意参数
+另外，我在第26~27行故意犯了个错（为了说明上述这些匹配器的作用），我之前明明让setDoubleValues第二个参数得大于等于1,但我实际传入时却传入一个0。这时程序运行时就报错了：
