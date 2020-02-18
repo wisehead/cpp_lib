@@ -5,7 +5,7 @@ jumbo install google-gtest
 g++ abs.cpp -I/home/chenhui3/.jumbo/include -L/home/chenhui3/.jumbo/lib  -lgtest
 
 #3.运行动态库目录
-xport LD_LIBRARY_PATH=/home/chenhui3/.jumbo/lib
+export LD_LIBRARY_PATH=/home/chenhui3/.jumbo/lib
 
 #4.例子
 
