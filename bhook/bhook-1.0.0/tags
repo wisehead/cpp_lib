@@ -1,0 +1,431 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+A	test/program/simple-control/simple.cpp	/^void A()$/;"	f
+A	test/program/simple/simple.cpp	/^void A()$/;"	f
+AsmHelper	include/AsmHelper.h	/^class AsmHelper$/;"	c
+AttachFunc	include/Core.h	/^	int AttachFunc(char *func_name, void *hook_func) {$/;"	f	class:Core
+AttachFunc	src/HookImpl.cpp	/^int HookImpl::AttachFunc(void *func_plt, void *hook_func)$/;"	f	class:HookImpl
+AttachFunc	src/HookManager.cpp	/^int HookManager::AttachFunc(char *func_name, void *hook_func)$/;"	f	class:HookManager
+AttachFuncLib	include/Core.h	/^	int AttachFuncLib(char *func_name, void *hook_func, void **pold_func) {$/;"	f	class:Core
+AttachFuncLib	src/HookImpl.cpp	/^int HookImpl::AttachFuncLib(const BinaryFile::Symbol &symbol, void *hook_func, void **pold_func)$/;"	f	class:HookImpl
+AttachFuncLib	src/HookManager.cpp	/^int HookManager::AttachFuncLib(char *func_name, void *hook_func, void **pold_func)$/;"	f	class:HookManager
+B	test/program/simple-control/hook.cpp	/^int B()$/;"	f
+B	test/program/simple-control/simple.cpp	/^int B()$/;"	f
+B	test/program/simple/simple.cpp	/^int B()$/;"	f
+BACKLOG	test/net/connect/fserver.cpp	/^#define	BACKLOG	/;"	d	file:
+BHOOK_TEST_ROOT	test/disk/user_write/Makefile	/^BHOOK_TEST_ROOT=..\/..$/;"	m
+BHOOK_TEST_ROOT	test/memory/api/Makefile	/^BHOOK_TEST_ROOT=..\/..$/;"	m
+BHOOK_TEST_ROOT	test/program/api/Makefile	/^BHOOK_TEST_ROOT=..\/..$/;"	m
+BHOOK_TEST_ROOT	test/program/library/Makefile	/^BHOOK_TEST_ROOT=..\/..$/;"	m
+BHOOK_TEST_ROOT	test/program/simple-control/Makefile	/^BHOOK_TEST_ROOT=..\/..$/;"	m
+BHOOK_TEST_ROOT	test/program/simple/Makefile	/^BHOOK_TEST_ROOT=..\/..$/;"	m
+BHOOK_TEST_ROOT	test/system/user_printf/Makefile	/^BHOOK_TEST_ROOT=..\/..$/;"	m
+BHOOK_TEST_ROOT	test/unittest/class/Makefile	/^BHOOK_TEST_ROOT=..\/..$/;"	m
+BHOOK_TEST_ROOT	test/unittest/sharedlibrary/Makefile	/^BHOOK_TEST_ROOT=..\/..$/;"	m
+BHOOK_TEST_ROOT	test/unittest/simple/Makefile	/^BHOOK_TEST_ROOT=..\/..$/;"	m
+BinaryFile	include/BinaryFile.h	/^class BinaryFile$/;"	c
+BinaryFile	src/BinaryFile.cpp	/^BinaryFile::BinaryFile()$/;"	f	class:BinaryFile
+C	test/program/simple-control/simple.cpp	/^void C()$/;"	f
+C	test/program/simple/simple.cpp	/^void C()$/;"	f
+CC	test/unittest/class/Makefile	/^CC = g++$/;"	m
+CC	test/unittest/sharedlibrary/Makefile	/^CC = g++$/;"	m
+CC	test/unittest/simple/Makefile	/^CC = g++$/;"	m
+CC	test/unittest/simple/lib/Makefile	/^CC		= gcc$/;"	m
+COMMAND_MAX_COUNT	include/Message.h	/^	static const int COMMAND_MAX_COUNT = 16;$/;"	m	class:Message
+COMMAND_MAX_LENGTH	include/Message.h	/^	static const int COMMAND_MAX_LENGTH = 1024;$/;"	m	class:Message
+COMMERRNO	preload/disk/fault_disk_file.cpp	/^#define COMMERRNO /;"	d	file:
+CPP	test/unittest/sharedlibrary/lib/Makefile	/^CPP		= g++$/;"	m
+CPP	test/unittest/simple/lib/Makefile	/^CPP		= g++$/;"	m
+CPPFILE	test/net/connect/Makefile	/^CPPFILE = $(wildcard *.cpp)$/;"	m
+CPPFILE	test/unittest/class/Makefile	/^CPPFILE=$(wildcard *.cpp)$/;"	m
+CPPFILE	test/unittest/sharedlibrary/Makefile	/^CPPFILE=$(wildcard *.cpp)$/;"	m
+CPPFILE	test/unittest/simple/Makefile	/^CPPFILE=$(wildcard *.cpp)$/;"	m
+CXXFLAGS	test/memory/api/Makefile	/^CXXFLAGS=$(BHOOK_CXXFLAGS)$/;"	m
+CXXFLAGS	test/program/api/Makefile	/^CXXFLAGS=$(BHOOK_CXXFLAGS)$/;"	m
+CXXFLAGS	test/program/library/Makefile	/^CXXFLAGS = -I$(MYLIB)\/include $(BHOOK_CXXFLAGS)$/;"	m
+CXXFLAGS	test/program/library/lib/Makefile	/^CXXFLAGS	=	-Wall -g -D_REENTRANT -D_FILTER -D_DEBUG_ -DNDEBUG $/;"	m
+CXXFLAGS	test/program/simple-control/Makefile	/^CXXFLAGS=$(BHOOK_CXXFLAGS)$/;"	m
+CXXFLAGS	test/program/simple/Makefile	/^CXXFLAGS=$(BHOOK_CXXFLAGS)$/;"	m
+CXXFLAGS	test/unittest/class/Makefile	/^CXXFLAGS = -I$(MYLIB)\/include $(BHOOK_CXXFLAGS) $(GTEST_CXXFLAGS)$/;"	m
+CXXFLAGS	test/unittest/class/lib/Makefile	/^CXXFLAGS	=	-Wall -g -D_REENTRANT -D_FILTER -D_DEBUG_ -DNDEBUG $/;"	m
+CXXFLAGS	test/unittest/sharedlibrary/Makefile	/^CXXFLAGS = -I$(MYLIB)\/include $(BHOOK_CXXFLAGS) $(GTEST_CXXFLAGS)$/;"	m
+CXXFLAGS	test/unittest/sharedlibrary/lib/Makefile	/^CXXFLAGS	=	-Wall -g -D_REENTRANT -D_FILTER -D_DEBUG_ -DNDEBUG $/;"	m
+CXXFLAGS	test/unittest/simple/Makefile	/^CXXFLAGS = -I$(MYLIB)\/include $(BHOOK_CXXFLAGS) $(GTEST_CXXFLAGS)$/;"	m
+CXXFLAGS	test/unittest/simple/lib/Makefile	/^CXXFLAGS	=	-Wall -g -D_REENTRANT -D_FILTER -D_DEBUG_ -DNDEBUG $/;"	m
+Call	test/unittest/class/lib/mylib.cpp	/^int Person::Call()$/;"	f	class:MyLib::Person
+Copy	src/AsmHelper.cpp	/^int AsmHelper::Copy(bfd_byte *buf, int bufsize, bfd *abfd, void *src, unsigned int minsize, int *src_dis_len)$/;"	f	class:AsmHelper
+Core	include/Core.h	/^class Core$/;"	c
+Core	src/Core.cpp	/^Core::Core()$/;"	f	class:Core
+CreatePipe	src/Message.cpp	/^int Message::CreatePipe()$/;"	f	class:Message
+D	test/program/simple-control/simple.cpp	/^void D()$/;"	f
+D	test/program/simple/simple.cpp	/^void D()$/;"	f
+DMGL_ANSI	include/BinaryFile.h	/^#define DMGL_ANSI /;"	d
+DMGL_ANSI	src/BinaryFile.cpp	/^#define DMGL_ANSI /;"	d	file:
+DMGL_PARAMS	include/BinaryFile.h	/^#define DMGL_PARAMS /;"	d
+DMGL_PARAMS	src/BinaryFile.cpp	/^#define DMGL_PARAMS /;"	d	file:
+DeletePipe	src/Message.cpp	/^void Message::DeletePipe()$/;"	f	class:Message
+Destroy	src/BinaryFile.cpp	/^void BinaryFile::Destroy()$/;"	f	class:BinaryFile
+Destroy	src/HookManager.cpp	/^void HookManager::Destroy()$/;"	f	class:HookManager
+Destroy	src/Message.cpp	/^void Message::Destroy()$/;"	f	class:Message
+DetachFunc	include/Core.h	/^	int DetachFunc(char *func_name) {$/;"	f	class:Core
+DetachFunc	src/HookImpl.cpp	/^int HookImpl::DetachFunc(void *func_plt)$/;"	f	class:HookImpl
+DetachFunc	src/HookManager.cpp	/^int HookManager::DetachFunc(char *func_name)$/;"	f	class:HookManager
+DetachFuncLib	include/Core.h	/^	int DetachFuncLib(char *func_name) {$/;"	f	class:Core
+DetachFuncLib	src/HookImpl.cpp	/^int HookImpl::DetachFuncLib(const BinaryFile::Symbol &symbol)$/;"	f	class:HookImpl
+DetachFuncLib	src/HookManager.cpp	/^int HookManager::DetachFuncLib(char *func_name)$/;"	f	class:HookManager
+ELFManager	include/ELFManager.h	/^	ELFManager() {}$/;"	f	class:ELFManager
+ELFManager	include/ELFManager.h	/^class ELFManager$/;"	c
+EXE	test/net/connect/Makefile	/^EXE = $(basename $(CPPFILE))$/;"	m
+EXE	test/unittest/class/Makefile	/^EXE=$(basename $(CPPFILE))$/;"	m
+EXE	test/unittest/sharedlibrary/Makefile	/^EXE=$(basename $(CPPFILE))$/;"	m
+EXE	test/unittest/simple/Makefile	/^EXE=$(basename $(CPPFILE))$/;"	m
+Elf_Ehdr	include/elfdef.h	/^}Elf_Ehdr;$/;"	t	typeref:struct:__anon3
+Elf_Shdr	include/elfdef.h	/^}Elf_Shdr;$/;"	t	typeref:struct:__anon4
+Elf_Sym	include/elfdef.h	/^}Elf_Sym;$/;"	t	typeref:struct:__anon5
+Enable	src/FaultUnit.cpp	/^bool FaultUnit::Enable() const$/;"	f	class:FaultUnit
+FAR_JMP_CODE_LEN	include/AsmHelper.h	/^#define	FAR_JMP_CODE_LEN	/;"	d
+FAULT_	include/common.h	/^#define	FAULT_(/;"	d
+FILE_NAME_MAX_SIZE	include/Message.h	/^	static const int FILE_NAME_MAX_SIZE = 64;$/;"	m	class:Message
+FarJmp	src/AsmHelper.cpp	/^int AsmHelper::FarJmp(bfd_byte *buf, int bufsize, bfd_vma jmpaddr)$/;"	f	class:AsmHelper
+FaultUnit	include/FaultUnit.h	/^class FaultUnit$/;"	c
+FaultUnit	src/FaultUnit.cpp	/^FaultUnit::FaultUnit($/;"	f	class:FaultUnit
+FaultUnit	src/FaultUnit.cpp	/^FaultUnit::FaultUnit()$/;"	f	class:FaultUnit
+GetRealFunc	include/Core.h	/^	void * GetRealFunc(char *func_name) {$/;"	f	class:Core
+GetRealFunc	src/HookManager.cpp	/^void *HookManager::GetRealFunc(char *func_name)$/;"	f	class:HookManager
+GetRealFuncLib	include/Core.h	/^	void * GetRealFuncLib(char *func_name) {$/;"	f	class:Core
+GetRealFuncLib	src/HookImpl.cpp	/^void * HookImpl::GetRealFuncLib(void *src_func)$/;"	f	class:HookImpl
+GetRealFuncLib	src/HookManager.cpp	/^void * HookManager::GetRealFuncLib(char *func_name)$/;"	f	class:HookManager
+HookImpl	include/HookImpl.h	/^class HookImpl$/;"	c
+HookImpl	src/HookImpl.cpp	/^HookImpl::HookImpl(bfd *abfd)$/;"	f	class:HookImpl
+HookInfo	include/HookImpl.h	/^	struct HookInfo$/;"	s	class:HookImpl
+HookManager	include/HookManager.h	/^class HookManager$/;"	c
+HookManager	src/HookManager.cpp	/^HookManager::HookManager()$/;"	f	class:HookManager
+INCLUDE	test/program/library/lib/Makefile	/^INCLUDE	= 	-I.\/ \\$/;"	m
+IOCtrl	src/Message.cpp	/^int Message::IOCtrl(int io, char *buf, int bufsize)$/;"	f	class:Message
+IO_INPUT	include/Message.h	/^		IO_INPUT = 0x1,$/;"	e	enum:Message::__anon6
+IO_OUTPUT	include/Message.h	/^		IO_OUTPUT = 0x2,$/;"	e	enum:Message::__anon6
+IO_READ	include/Message.h	/^		IO_READ = 0x10,$/;"	e	enum:Message::__anon6
+IO_UNKNOW	include/Message.h	/^		IO_UNKNOW = 0x0,$/;"	e	enum:Message::__anon6
+IO_WRITE	include/Message.h	/^		IO_WRITE = 0x20,$/;"	e	enum:Message::__anon6
+IR8	include/AsmHelper.h	/^#define	IR8	/;"	d
+IR9	include/AsmHelper.h	/^#define	IR9	/;"	d
+IRAX	include/AsmHelper.h	/^#define	IRAX	/;"	d
+IRBP	include/AsmHelper.h	/^#define	IRBP	/;"	d
+IRBX	include/AsmHelper.h	/^#define	IRBX	/;"	d
+IRCX	include/AsmHelper.h	/^#define	IRCX	/;"	d
+IRDI	include/AsmHelper.h	/^#define	IRDI	/;"	d
+IRDX	include/AsmHelper.h	/^#define	IRDX	/;"	d
+IRSI	include/AsmHelper.h	/^#define	IRSI	/;"	d
+IRSP	include/AsmHelper.h	/^#define	IRSP	/;"	d
+Info	test/program/api/api.cpp	/^struct Info$/;"	s	file:
+Init	src/BinaryFile.cpp	/^int BinaryFile::Init(char *filename)$/;"	f	class:BinaryFile
+Init	src/Core.cpp	/^int Core::Init()$/;"	f	class:Core
+Init	src/HookManager.cpp	/^int HookManager::Init()$/;"	f	class:HookManager
+Init	src/Message.cpp	/^int Message::Init(read_done_callback cb)$/;"	f	class:Message
+InitRelsym	src/BinaryFile.cpp	/^int BinaryFile::InitRelsym(relsym_dict &rels)$/;"	f	class:BinaryFile
+InitSymbols	src/BinaryFile.cpp	/^int BinaryFile::InitSymbols(symbol_dict &symbols, int sym_flag)$/;"	f	class:BinaryFile
+InstInfo	include/AsmHelper.h	/^	struct InstInfo {$/;"	s	class:AsmHelper
+LDFLAGS	test/memory/api/Makefile	/^LDFLAGS=$(BHOOK_LDFLAGS)$/;"	m
+LDFLAGS	test/net/connect/Makefile	/^LDFLAGS	= -lpthread $/;"	m
+LDFLAGS	test/program/api/Makefile	/^LDFLAGS=$(BHOOK_LDFLAGS)$/;"	m
+LDFLAGS	test/program/library/Makefile	/^LDFLAGS = -L$(MYLIB)\/lib -lmylib $(BHOOK_LDFLAGS)$/;"	m
+LDFLAGS	test/program/simple-control/Makefile	/^LDFLAGS=$(BHOOK_LDFLAGS)$/;"	m
+LDFLAGS	test/program/simple/Makefile	/^LDFLAGS=$(BHOOK_LDFLAGS)$/;"	m
+LDFLAGS	test/unittest/class/Makefile	/^LDFLAGS = -L$(MYLIB)\/lib -lmylib $(BHOOK_LDFLAGS) $(GTEST_LDFLAGS)$/;"	m
+LDFLAGS	test/unittest/sharedlibrary/Makefile	/^LDFLAGS = -L$(MYLIB)\/lib -lmylib $(BHOOK_LDFLAGS) $(GTEST_LDFLAGS)$/;"	m
+LDFLAGS	test/unittest/simple/Makefile	/^LDFLAGS = -L$(MYLIB)\/lib -lmylib $(BHOOK_LDFLAGS) $(GTEST_LDFLAGS)$/;"	m
+MAXDATASIZE	test/net/connect/fclient.cpp	/^#define MAXDATASIZE /;"	d	file:
+MAXDATASIZE	test/net/connect/fserver.cpp	/^#define MAXDATASIZE /;"	d	file:
+MAX_INSTRUCTION_LEN	include/AsmHelper.h	/^#define	MAX_INSTRUCTION_LEN	/;"	d
+MAX_NAME_LEN	include/FaultUnit.h	/^    static const int MAX_NAME_LEN = 64;$/;"	m	class:FaultUnit
+MAX_PATH_SIZE	include/HookManager.h	/^	static const int MAX_PATH_SIZE = 512;$/;"	m	class:HookManager
+MM_NONE	include/AsmHelper.h	/^	MM_NONE = 0,$/;"	e	enum:__anon1
+MM_REXB	include/AsmHelper.h	/^	MM_REXB$/;"	e	enum:__anon1
+MYLIB	test/program/library/Makefile	/^MYLIB = lib\/output$/;"	m
+MYLIB	test/unittest/class/Makefile	/^MYLIB = lib\/output$/;"	m
+MYLIB	test/unittest/sharedlibrary/Makefile	/^MYLIB = lib\/output$/;"	m
+MYLIB	test/unittest/simple/Makefile	/^MYLIB = lib\/output$/;"	m
+Message	include/Message.h	/^class Message$/;"	c
+Message	src/Message.cpp	/^Message::Message()$/;"	f	class:Message
+MyLib	test/unittest/class/lib/mylib.cpp	/^namespace MyLib {$/;"	n	file:
+MyLib	test/unittest/class/lib/mylib.h	/^namespace MyLib {$/;"	n
+MyPrivateSay	test/unittest/class/test_class.cpp	/^int MyPrivateSay(MyLib::Person *person)$/;"	f
+MyPublicSay	test/unittest/class/test_class.cpp	/^int MyPublicSay(MyLib::Person *person)$/;"	f
+Parse	src/Message.cpp	/^int Message::Parse(char *command, FaultUnit *fu) $/;"	f	class:Message
+Person	test/unittest/class/lib/mylib.h	/^	Person() {}$/;"	f	class:MyLib::Person
+Person	test/unittest/class/lib/mylib.h	/^class Person$/;"	c	namespace:MyLib
+PrivateSay	test/unittest/class/lib/mylib.cpp	/^int Person::PrivateSay()$/;"	f	class:MyLib::Person
+Process	src/Message.cpp	/^int Message::Process(char *command, bool bout)$/;"	f	class:Message
+PublicSay	test/unittest/class/lib/mylib.cpp	/^int Person::PublicSay()$/;"	f	class:MyLib::Person
+ReadDoneCallBack	src/Core.cpp	/^int Core::ReadDoneCallBack(const FaultUnit &fu, char *outbuf, int bufsize)$/;"	f	class:Core
+RelSym	include/BinaryFile.h	/^	struct RelSym$/;"	s	class:BinaryFile
+Release	src/Core.cpp	/^void Core::Release()$/;"	f	class:Core
+SERVPORT	test/net/connect/fclient.cpp	/^#define SERVPORT /;"	d	file:
+SERVPORT	test/net/connect/fserver.cpp	/^#define SERVPORT /;"	d	file:
+SO_MAIN	include/bhook.h	/^#define	SO_MAIN(/;"	d
+SO_MAIN	preload/disk/fault_disk_file.cpp	/^SO_MAIN(fault_disk_file)$/;"	f
+SO_MAIN	preload/disk/fault_disk_system.cpp	/^SO_MAIN(fault_disk_system)$/;"	f
+SO_MAIN	preload/memory/fault_memory.cpp	/^SO_MAIN(fault_memory)$/;"	f
+SO_MAIN	preload/net/fault_net.cpp	/^SO_MAIN(fault_net)$/;"	f
+SO_MAIN_START	include/bhook.h	/^#define	SO_MAIN_START(/;"	d
+STDIN	test/net/connect/fclient.cpp	/^#define STDIN /;"	d	file:
+STDIN	test/net/connect/fserver.cpp	/^#define STDIN /;"	d	file:
+SYM_FUNC	include/BinaryFile.h	/^		SYM_FUNC = 1,$/;"	e	enum:BinaryFile::__anon2
+SYM_OBJECT	include/BinaryFile.h	/^		SYM_OBJECT = 2$/;"	e	enum:BinaryFile::__anon2
+SetProt	src/HookImpl.cpp	/^int HookImpl::SetProt(const void *addr, size_t len, int prot)$/;"	f	class:HookImpl
+Symbol	include/BinaryFile.h	/^	struct Symbol$/;"	s	class:BinaryFile
+SysHookInfo	include/HookImpl.h	/^	struct SysHookInfo$/;"	s	class:HookImpl
+TARGET	test/program/library/lib/Makefile	/^TARGET = libmylib.a$/;"	m
+TARGET	test/unittest/class/lib/Makefile	/^TARGET = libmylib.a$/;"	m
+TARGET	test/unittest/sharedlibrary/lib/Makefile	/^TARGET = libmylib.so$/;"	m
+TARGET	test/unittest/simple/lib/Makefile	/^TARGET = libmylib.a$/;"	m
+TEST	test/unittest/class/test_class.cpp	/^TEST(Person, PrivateSay) $/;"	f
+TEST	test/unittest/class/test_class.cpp	/^TEST(Person, PublicSay) $/;"	f
+TEST	test/unittest/sharedlibrary/test_so.cpp	/^TEST(MyLib, case1) $/;"	f
+TEST	test/unittest/sharedlibrary/test_so.cpp	/^TEST(MyLib, case2) $/;"	f
+TEST	test/unittest/simple/test_attach.cpp	/^TEST(MyLib, case1) $/;"	f
+TEST	test/unittest/simple/test_attach.cpp	/^TEST(MyLib, case2) $/;"	f
+TEST	test/unittest/simple/test_enable.cpp	/^TEST(MyLib, case1) $/;"	f
+TEST	test/unittest/simple/test_enable.cpp	/^TEST(MyLib, case2) $/;"	f
+Update	src/FaultUnit.cpp	/^int FaultUnit::Update(const FaultUnit &fu)$/;"	f	class:FaultUnit
+__ASMHELPER_H_	include/AsmHelper.h	/^#define  __ASMHELPER_H_$/;"	d
+__BHOOK_H_	include/bhook.h	/^#define  __BHOOK_H_$/;"	d
+__BINARYFILE_H_	include/BinaryFile.h	/^#define  __BINARYFILE_H_$/;"	d
+__COMMON_H_	include/common.h	/^#define  __COMMON_H_$/;"	d
+__CORE_H__	include/Core.h	/^#define __CORE_H__$/;"	d
+__ELFDEF_H_	include/elfdef.h	/^#define  __ELFDEF_H_$/;"	d
+__ELFMANAGER_H_	include/ELFManager.h	/^#define  __ELFMANAGER_H_$/;"	d
+__FAULTUNIT_H_	include/FaultUnit.h	/^#define  __FAULTUNIT_H_$/;"	d
+__HOOKIMPL_H_	include/HookImpl.h	/^#define  __HOOKIMPL_H_$/;"	d
+__HOOKMANAGER_H_	include/HookManager.h	/^#define  __HOOKMANAGER_H_$/;"	d
+__MESSAGE_H_	include/Message.h	/^#define  __MESSAGE_H_$/;"	d
+__MODE_T_TYPE	preload/disk/fault_disk_system.cpp	/^#define __MODE_T_TYPE /;"	d	file:
+__MYLIB_H_	test/program/library/lib/mylib.h	/^#define  __MYLIB_H_$/;"	d
+__MYLIB_H_	test/unittest/class/lib/mylib.h	/^#define  __MYLIB_H_$/;"	d
+__MYLIB_H_	test/unittest/sharedlibrary/lib/mylib.h	/^#define  __MYLIB_H_$/;"	d
+__MYLIB_H_	test/unittest/simple/lib/mylib.h	/^#define  __MYLIB_H_$/;"	d
+__U32_TYPE	preload/disk/fault_disk_system.cpp	/^#define __U32_TYPE /;"	d	file:
+__mode_t	preload/disk/fault_disk_system.cpp	/^#define __mode_t /;"	d	file:
+__mode_t_defined	preload/disk/fault_disk_system.cpp	/^# define __mode_t_defined$/;"	d	file:
+_abfd	include/BinaryFile.h	/^	bfd				*_abfd;$/;"	m	class:BinaryFile
+_abfd	include/HookImpl.h	/^	bfd				*_abfd;$/;"	m	class:HookImpl
+_bf	include/HookManager.h	/^	BinaryFile	*_bf;$/;"	m	class:HookManager
+_ehdr	include/ELFManager.h	/^	Elf_Ehdr	_ehdr;$/;"	m	class:ELFManager
+_enable	include/FaultUnit.h	/^	int				_enable;$/;"	m	class:FaultUnit
+_err	include/FaultUnit.h	/^	int				_err;$/;"	m	class:FaultUnit
+_fd	include/ELFManager.h	/^	int _fd;$/;"	m	class:ELFManager
+_filename	include/ELFManager.h	/^	const char *_filename;$/;"	m	class:ELFManager
+_hook_impl	include/HookManager.h	/^	HookImpl	*_hook_impl;$/;"	m	class:HookManager
+_hook_manager	include/Core.h	/^	HookManager		*_hook_manager;$/;"	m	class:Core
+_hook_vecs	include/Core.h	/^    hook_map_t		_hook_vecs;    $/;"	m	class:Core
+_hooks	include/HookImpl.h	/^	hook_dict		_hooks;$/;"	m	class:HookImpl
+_ident	include/ELFManager.h	/^	char		_ident[EI_NIDENT];$/;"	m	class:ELFManager
+_in_file_name	include/Message.h	/^	char _in_file_name[FILE_NAME_MAX_SIZE];$/;"	m	class:Message
+_init	include/HookManager.h	/^	bool		_init;$/;"	m	class:HookManager
+_inst_info	include/AsmHelper.h	/^	static struct InstInfo _inst_info;$/;"	m	class:AsmHelper	typeref:struct:AsmHelper::InstInfo
+_inst_info	src/AsmHelper.cpp	/^struct AsmHelper::InstInfo AsmHelper::_inst_info;$/;"	m	class:AsmHelper	typeref:struct:AsmHelper::	file:
+_inst_lock	include/Core.h	/^	static pthread_mutex_t _inst_lock;$/;"	m	class:Core
+_inst_lock	src/Core.cpp	/^pthread_mutex_t Core::_inst_lock = PTHREAD_MUTEX_INITIALIZER;$/;"	m	class:Core	file:
+_instance	include/Core.h	/^	static Core		*_instance;$/;"	m	class:Core
+_instance	src/Core.cpp	/^Core * Core::_instance = NULL;$/;"	m	class:Core	file:
+_is_32_bit	include/ELFManager.h	/^	bool		_is_32_bit;$/;"	m	class:ELFManager
+_mq	include/Core.h	/^    Message			*_mq;$/;"	m	class:Core
+_name	include/FaultUnit.h	/^	char			_name[MAX_NAME_LEN];$/;"	m	class:FaultUnit
+_out_file_name	include/Message.h	/^	char _out_file_name[FILE_NAME_MAX_SIZE];$/;"	m	class:Message
+_param	include/FaultUnit.h	/^	void			*_param;$/;"	m	class:FaultUnit
+_pid	include/Message.h	/^	int	_pid;$/;"	m	class:Message
+_probability	include/FaultUnit.h	/^	unsigned int	_probability;$/;"	m	class:FaultUnit
+_read_done_cb	include/Message.h	/^	read_done_callback  _read_done_cb;$/;"	m	class:Message
+_rels	include/BinaryFile.h	/^	relsym_dict		_rels;$/;"	m	class:BinaryFile
+_symbols	include/BinaryFile.h	/^	symbol_dict		_symbols;$/;"	m	class:BinaryFile
+_sys_hooks	include/HookImpl.h	/^	sys_hook_dict	_sys_hooks;$/;"	m	class:HookImpl
+add_cmd	scripts/bhook.in	/^function add_cmd() {$/;"	f
+addr	include/BinaryFile.h	/^		void			*addr;$/;"	m	struct:BinaryFile::Symbol
+attach_func	src/bhook.cpp	/^int attach_func(char *func_name, void *hook_func)$/;"	f
+attach_func_lib	src/bhook.cpp	/^int attach_func_lib(char *func_name, void *hook_func)$/;"	f
+backup	include/HookImpl.h	/^		char	backup[FAR_JMP_CODE_LEN];$/;"	m	struct:HookImpl::HookInfo
+bfd_demangle	configure	/^bfd_demangle ();$/;"	f
+bind	include/ELFManager.h	/^	unsigned char	bind;$/;"	m	struct:elf_symbol
+bind	preload/net/fault_net.cpp	/^	int FAULT_(bind)(int sockfd, const struct sockaddr *serv_addr, socklen_t addrlen)$/;"	f
+buffer_read_memory	src/AsmHelper.cpp	/^int AsmHelper::buffer_read_memory (bfd_vma memaddr,$/;"	f	class:AsmHelper
+calloc	preload/memory/fault_memory.cpp	/^	void *FAULT_(calloc)(size_t nmemb,size_t size)$/;"	f
+close	preload/disk/fault_disk_system.cpp	/^	int FAULT_(close)(int fd)$/;"	f
+cmd_monitor_thread	src/Message.cpp	/^void * Message::cmd_monitor_thread(void *ptr)$/;"	f	class:Message
+codep	include/AsmHelper.h	/^		bfd_byte *codep[4];	\/* 指向4字节长数据 *\/$/;"	m	struct:AsmHelper::InstInfo
+connect	preload/net/fault_net.cpp	/^	int FAULT_(connect)(int sockfd, const struct sockaddr *serv_addr, socklen_t addrlen)$/;"	f
+count	include/AsmHelper.h	/^		unsigned int count;$/;"	m	struct:AsmHelper::InstInfo
+detach_func	src/bhook.cpp	/^int detach_func(char *func_name)$/;"	f
+detach_func_lib	src/bhook.cpp	/^int detach_func_lib(char *func_name)$/;"	f
+e_shentsize	include/elfdef.h	/^	unsigned int		e_shentsize;$/;"	m	struct:__anon3
+e_shnum	include/elfdef.h	/^	unsigned int		e_shnum;$/;"	m	struct:__anon3
+e_shoff	include/elfdef.h	/^	unsigned long		e_shoff;$/;"	m	struct:__anon3
+elf_canonicalize_relsym	src/ELFManager.cpp	/^int ELFManager::elf_canonicalize_relsym(erelsym **rel_table, int max_count)$/;"	f	class:ELFManager
+elf_canonicalize_symbol	src/ELFManager.cpp	/^int ELFManager::elf_canonicalize_symbol(esymbol **symbol_table, int unsigned type)$/;"	f	class:ELFManager
+elf_canonicalize_symtab	src/ELFManager.cpp	/^int ELFManager::elf_canonicalize_symtab(esymbol **symbol_table)$/;"	f	class:ELFManager
+elf_close	src/ELFManager.cpp	/^void ELFManager::elf_close()$/;"	f	class:ELFManager
+elf_get_relsym_upper_bound	src/ELFManager.cpp	/^int ELFManager::elf_get_relsym_upper_bound(int *pcount)$/;"	f	class:ELFManager
+elf_get_section_upper_bound	src/ELFManager.cpp	/^int ELFManager::elf_get_section_upper_bound(unsigned int type, int *pcount)$/;"	f	class:ELFManager
+elf_get_symtab_upper_bound	src/ELFManager.cpp	/^int ELFManager::elf_get_symtab_upper_bound()$/;"	f	class:ELFManager
+elf_open	src/ELFManager.cpp	/^int ELFManager::elf_open(const char *filename)$/;"	f	class:ELFManager
+elf_read	src/ELFManager.cpp	/^int ELFManager::elf_read(int pos, void *buf, int count)$/;"	f	class:ELFManager
+elf_read_ehdr	src/ELFManager.cpp	/^int ELFManager::elf_read_ehdr(Elf_Ehdr &ehdr)$/;"	f	class:ELFManager
+elf_read_shdrs	src/ELFManager.cpp	/^int ELFManager::elf_read_shdrs(Elf_Shdr *shdrs, unsigned int shnum)$/;"	f	class:ELFManager
+elf_relsym	include/ELFManager.h	/^typedef struct elf_relsym$/;"	s
+elf_symbol	include/ELFManager.h	/^typedef struct elf_symbol$/;"	s
+empty_fprintf	include/AsmHelper.h	/^	static int empty_fprintf(FILE *stream, const char *fmt, ...) $/;"	f	class:AsmHelper
+end	test/program/api/api.cpp	/^	int end;$/;"	m	struct:Info	file:
+erelsym	include/ELFManager.h	/^}erelsym;$/;"	t	typeref:struct:elf_relsym
+esymbol	include/ELFManager.h	/^}esymbol;$/;"	t	typeref:struct:elf_symbol
+fault_ctrl	src/bhook.cpp	/^inline int fault_ctrl(const char *name, int enable, unsigned int probability, int err, void *param)$/;"	f
+fault_disable	src/bhook.cpp	/^int fault_disable(const char *name)$/;"	f
+fault_enable	src/bhook.cpp	/^int fault_enable(const char *name, unsigned int probability, int err, void *param)$/;"	f
+fault_fail	src/bhook.cpp	/^int fault_fail(const char *name, int *perr, void **pparam)$/;"	f
+fclose	preload/disk/fault_disk_file.cpp	/^	int FAULT_(fclose)(FILE *stream)$/;"	f
+fgetc	preload/disk/fault_disk_file.cpp	/^	int FAULT_(fgetc)(FILE *stream)$/;"	f
+fgets	preload/disk/fault_disk_file.cpp	/^	char *FAULT_(fgets)(char *s, int size, FILE *stream)$/;"	f
+fopen	preload/disk/fault_disk_file.cpp	/^	FILE * FAULT_(fopen)(const char * path,const char * mode)$/;"	f
+fputc	preload/disk/fault_disk_file.cpp	/^	int FAULT_(fputc)(int c, FILE *stream)$/;"	f
+fputs	preload/disk/fault_disk_file.cpp	/^	int FAULT_(fputs)(const char *s, FILE *stream)$/;"	f
+fread	preload/disk/fault_disk_file.cpp	/^	size_t FAULT_(fread)(void * ptr,size_t size,size_t nmemb,FILE * stream)$/;"	f
+free	preload/memory/fault_memory.cpp	/^	void FAULT_(free)(void *ptr)$/;"	f
+fseek	preload/disk/fault_disk_file.cpp	/^	int FAULT_(fseek)(FILE *stream, long offset, int whence)$/;"	f
+ftell	preload/disk/fault_disk_file.cpp	/^	long FAULT_(ftell)(FILE *stream)$/;"	f
+func	test/program/api/api.cpp	/^int func(int num)$/;"	f
+func	test/unittest/sharedlibrary/lib/mylib.cpp	/^int func(char *str)$/;"	f
+func	test/unittest/simple/lib/mylib.cpp	/^int func(char *str)$/;"	f
+func_infer_tag	build-aux/ltmain.sh	/^func_infer_tag () {$/;"	f
+func_win32_libid	build-aux/ltmain.sh	/^func_win32_libid () {$/;"	f
+fwrite	preload/disk/fault_disk_file.cpp	/^	size_t FAULT_(fwrite)(const void * ptr,size_t size,size_t nmemb,FILE * stream)$/;"	f
+getBFD	include/BinaryFile.h	/^	bfd * getBFD()$/;"	f	class:BinaryFile
+getEnable	include/FaultUnit.h	/^	int getEnable() const $/;"	f	class:FaultUnit
+getError	include/FaultUnit.h	/^	int getError() const $/;"	f	class:FaultUnit
+getFaultUnit	src/Core.cpp	/^const FaultUnit * Core::getFaultUnit(string key)$/;"	f	class:Core
+getInstance	src/Core.cpp	/^Core * Core::getInstance()$/;"	f	class:Core
+getName	include/FaultUnit.h	/^	const char * getName() const$/;"	f	class:FaultUnit
+getParam	include/FaultUnit.h	/^	void *getParam() const$/;"	f	class:FaultUnit
+getProbability	include/FaultUnit.h	/^	unsigned int getProbability() const$/;"	f	class:FaultUnit
+getRelocs	src/BinaryFile.cpp	/^int BinaryFile::getRelocs(char *symbol_name, RelSym &relsym)$/;"	f	class:BinaryFile
+getSymbol	src/BinaryFile.cpp	/^int BinaryFile::getSymbol(char *symbol_name, Symbol &symbol)$/;"	f	class:BinaryFile
+getSymbol	src/HookManager.cpp	/^void * HookManager::getSymbol(char *symbol_name)$/;"	f	class:HookManager
+get_real_func	src/bhook.cpp	/^void *get_real_func(char *func_name)$/;"	f
+get_real_func_lib	src/bhook.cpp	/^void *get_real_func_lib(char *func_name)$/;"	f
+getfilename	test/disk/user_write/hook.cpp	/^int getfilename(int fd, char *buf, int bufsize)$/;"	f
+getpeername	preload/net/fault_net.cpp	/^	int FAULT_(getpeername)(int s, struct sockaddr *name, socklen_t *namelen)$/;"	f
+getsockname	preload/net/fault_net.cpp	/^	int FAULT_(getsockname)(int s, struct sockaddr *name, socklen_t *namelen)$/;"	f
+getsockopt	preload/net/fault_net.cpp	/^	int FAULT_(getsockopt)(int s, int level, int optname, void *optval, socklen_t *optlen)$/;"	f
+hook_dict	include/HookImpl.h	/^	typedef std::map<void *, HookInfo> hook_dict;$/;"	t	class:HookImpl
+hook_func	include/HookImpl.h	/^		void	*hook_func;$/;"	m	struct:HookImpl::HookInfo
+hook_func	include/HookImpl.h	/^		void	*hook_func;$/;"	m	struct:HookImpl::SysHookInfo
+hook_init	test/disk/user_write/hook.cpp	/^void __attribute__ ((constructor)) hook_init(void)$/;"	f
+hook_init	test/program/simple-control/hook.cpp	/^void __attribute__ ((constructor)) hook_init(void)$/;"	f
+hook_init	test/program/simple/hook.cpp	/^void __attribute__ ((constructor)) hook_init(void)$/;"	f
+hook_map_t	include/Core.h	/^	typedef map<string, FaultUnit>  hook_map_t;$/;"	t	class:Core
+is_pid	scripts/bhook.in	/^function is_pid() {$/;"	f
+listen	preload/net/fault_net.cpp	/^	int FAULT_(listen)(int s, int backlog)$/;"	f
+main	build-aux/config.guess	/^		main()$/;"	f
+main	build-aux/config.guess	/^	main ()$/;"	f
+main	build-aux/config.guess	/^main ()$/;"	f
+main	test/disk/fread/readfile.cpp	/^int main()$/;"	f
+main	test/disk/user_write/user_write.cpp	/^int main(int argc, char *argv[])$/;"	f
+main	test/disk/write/writefile.cpp	/^int main()$/;"	f
+main	test/memory/api/malloc.cpp	/^int main()$/;"	f
+main	test/memory/malloc/malloc.cpp	/^int main()$/;"	f
+main	test/net/connect/fclient.cpp	/^int main(int argc, char **argv)$/;"	f
+main	test/net/connect/fserver.cpp	/^int main(void)$/;"	f
+main	test/program/api/api.cpp	/^int main()$/;"	f
+main	test/program/library/attachlib.cpp	/^int main()$/;"	f
+main	test/program/simple-control/simple.cpp	/^int main()$/;"	f
+main	test/program/simple/simple.cpp	/^int main()$/;"	f
+main	test/system/user_printf/main.cpp	/^int main()$/;"	f
+main	test/unittest/class/test_class.cpp	/^int  main(int  argc,  char  **argv) {$/;"	f
+main	test/unittest/sharedlibrary/test_so.cpp	/^int  main(int  argc,  char  **argv) {$/;"	f
+main	test/unittest/simple/test_attach.cpp	/^int  main(int  argc,  char  **argv) {$/;"	f
+main	test/unittest/simple/test_enable.cpp	/^int  main(int  argc,  char  **argv) {$/;"	f
+main_fini	src/Core.cpp	/^void __attribute__ ((destructor)) main_fini()$/;"	f
+main_init	src/Core.cpp	/^void __attribute__ ((constructor)) main_init()$/;"	f
+malloc	preload/memory/fault_memory.cpp	/^	void *FAULT_(malloc)(size_t size)$/;"	f
+memccpy	preload/memory/fault_memory.cpp	/^	void *FAULT_(memccpy)(void *dest, const void *src, int c, size_t n)$/;"	f
+memchr	preload/memory/fault_memory.cpp	/^	void *FAULT_(memchr)(const void *s, int c, size_t n)$/;"	f
+memcmp	preload/memory/fault_memory.cpp	/^	int FAULT_(memcmp)(const void *s1, const void *s2, size_t n)$/;"	f
+memcpy	preload/memory/fault_memory.cpp	/^	void *FAULT_(memcpy)(void *dest, const void *src, size_t n)$/;"	f
+memmove	preload/memory/fault_memory.cpp	/^	void *FAULT_(memmove)(void *dest, const void *src, size_t n)$/;"	f
+mempcpy	preload/memory/fault_memory.cpp	/^	void *FAULT_(mempcpy)(void *dest, const void *src, size_t n)$/;"	f
+memrchr	preload/memory/fault_memory.cpp	/^	void *FAULT_(memrchr)(const void *s, int c, size_t n)$/;"	f
+memset	preload/memory/fault_memory.cpp	/^	void *FAULT_(memset)(void *s,int c ,size_t n)$/;"	f
+mode_t	preload/disk/fault_disk_system.cpp	/^typedef __mode_t mode_t;$/;"	t	file:
+my_B	test/program/simple/hook.cpp	/^int my_B()$/;"	f
+my_func	test/unittest/simple/test_attach.cpp	/^int my_func(char *str)$/;"	f
+my_func	test/unittest/simple/test_enable.cpp	/^int my_func(char *str)$/;"	f
+my_malloc	test/memory/api/malloc.cpp	/^void *my_malloc(size_t size)$/;"	f
+my_malloc	test/program/library/attachlib.cpp	/^void *my_malloc(ssize_t size) $/;"	f
+my_printf	test/system/user_printf/my_printf.cpp	/^int my_printf(const char *format, ...)$/;"	f
+my_printf_init	test/system/user_printf/my_printf.cpp	/^void __attribute__ ((constructor)) my_printf_init(void)$/;"	f
+my_so_func	test/unittest/sharedlibrary/test_so.cpp	/^int my_so_func(char *str)$/;"	f
+my_write	test/disk/user_write/hook.cpp	/^ssize_t my_write(int fd, const void *buf, size_t count)$/;"	f
+name	include/ELFManager.h	/^	char			*name;$/;"	m	struct:elf_symbol
+new_fread	test/program/api/api.cpp	/^size_t new_fread(void * ptr,size_t size,size_t nmemb,FILE * stream)$/;"	f
+new_func	test/program/api/api.cpp	/^int new_func(int num)$/;"	f
+offset	include/ELFManager.h	/^	unsigned long	offset;$/;"	m	struct:elf_relsym
+old_addr	include/HookImpl.h	/^		void	*old_addr;$/;"	m	struct:HookImpl::SysHookInfo
+open	preload/disk/fault_disk_system.cpp	/^	int FAULT_(open)(const char *pathname, int flags, mode_t mode)$/;"	f
+opts_reset	scripts/bhook.in	/^function opts_reset() {$/;"	f
+pgot	include/BinaryFile.h	/^		void			*pgot;$/;"	m	struct:BinaryFile::RelSym
+print_address	src/AsmHelper.cpp	/^void AsmHelper::print_address (bfd_vma addr, struct disassemble_info *info)$/;"	f	class:AsmHelper
+prototypes	configure	/^   function prototypes and stuff, but not '\\xHH' hex character constants.$/;"	f
+pthread_create	configure	/^pthread_create ();$/;"	f
+read	preload/disk/fault_disk_system.cpp	/^	ssize_t FAULT_(read)(int fd, void *buf, size_t count)$/;"	f
+read_done_callback	include/Message.h	/^	typedef int (*read_done_callback)(const FaultUnit &eu, char *outbuf, int bufsize);$/;"	t	class:Message
+realaddr	include/AsmHelper.h	/^		bfd_vma realaddr;	\/* 绝对地址 *\/$/;"	m	struct:AsmHelper::InstInfo
+realloc	preload/memory/fault_memory.cpp	/^	void *FAULT_(realloc)(void *ptr,size_t size)$/;"	f
+realname	include/BinaryFile.h	/^		std::string		realname;$/;"	m	struct:BinaryFile::RelSym
+recv	preload/net/fault_net.cpp	/^	ssize_t FAULT_(recv)(int s, void *buf, size_t len, int flags)$/;"	f
+recvfrom	preload/net/fault_net.cpp	/^	ssize_t FAULT_(recvfrom)(int s, void *buf, size_t len, int flags, struct sockaddr *from, socklen_t *fromlen)$/;"	f
+relsym_dict	include/BinaryFile.h	/^	typedef std::map<std::string, RelSym> relsym_dict;$/;"	t	class:BinaryFile
+ret_val	test/program/api/api.cpp	/^	int ret_val;$/;"	m	struct:Info	file:
+riprel	include/AsmHelper.h	/^		int riprel;		\/* 1=>存在相对偏移，0=>不存在相对偏移 *\/$/;"	m	struct:AsmHelper::InstInfo
+run	scripts/bhook.in	/^function run() {$/;"	f
+send	preload/net/fault_net.cpp	/^	ssize_t FAULT_(send)(int s, const void *buf, size_t len, int flags)$/;"	f
+send_cmds	scripts/bhook.in	/^function send_cmds() {$/;"	f
+sendto	preload/net/fault_net.cpp	/^	ssize_t FAULT_(sendto)(int s, const void *buf, size_t len, int flags, const struct sockaddr *to, socklen_t tolen)$/;"	f
+setEnable	include/FaultUnit.h	/^	void setEnable(int enable)$/;"	f	class:FaultUnit
+setError	include/FaultUnit.h	/^	void setError(int err)$/;"	f	class:FaultUnit
+setFaultUnit	src/Core.cpp	/^int Core::setFaultUnit(const FaultUnit &fu)$/;"	f	class:Core
+setName	include/FaultUnit.h	/^	void setName(const char *name)$/;"	f	class:FaultUnit
+setParam	include/FaultUnit.h	/^	void setParam(void *param) $/;"	f	class:FaultUnit
+setProbability	include/FaultUnit.h	/^	void setProbability(unsigned int probability)$/;"	f	class:FaultUnit
+setsockopt	preload/net/fault_net.cpp	/^	int FAULT_(setsockopt)(int s, int level, int optname, const void *optval, socklen_t *optlen)$/;"	f
+sh_entsize	include/elfdef.h	/^	unsigned long		sh_entsize;$/;"	m	struct:__anon4
+sh_link	include/elfdef.h	/^	unsigned int		sh_link;$/;"	m	struct:__anon4
+sh_offset	include/elfdef.h	/^	unsigned long		sh_offset;$/;"	m	struct:__anon4
+sh_size	include/elfdef.h	/^	unsigned long		sh_size;$/;"	m	struct:__anon4
+sh_type	include/elfdef.h	/^	unsigned int		sh_type;$/;"	m	struct:__anon4
+shndx	include/ELFManager.h	/^	unsigned short	shndx;$/;"	m	struct:elf_symbol
+size	include/BinaryFile.h	/^		unsigned long	size;$/;"	m	struct:BinaryFile::Symbol
+size	include/ELFManager.h	/^	unsigned long	size;$/;"	m	struct:elf_symbol
+socket	preload/net/fault_net.cpp	/^	int FAULT_(socket)(int domain, int type, int protocol)$/;"	f
+st_info	include/elfdef.h	/^	unsigned char		st_info;$/;"	m	struct:__anon5
+st_name	include/elfdef.h	/^	unsigned long		st_name;$/;"	m	struct:__anon5
+st_shndx	include/elfdef.h	/^	unsigned int		st_shndx;$/;"	m	struct:__anon5
+st_size	include/elfdef.h	/^	unsigned long		st_size;$/;"	m	struct:__anon5
+st_value	include/elfdef.h	/^	unsigned long		st_value;$/;"	m	struct:__anon5
+start	test/program/api/api.cpp	/^	int start;$/;"	m	struct:Info	file:
+symbol_dict	include/BinaryFile.h	/^	typedef std::map<std::string, Symbol> symbol_dict;$/;"	t	class:BinaryFile
+symid	include/ELFManager.h	/^	unsigned long	symid;$/;"	m	struct:elf_relsym
+sys_hook_dict	include/HookImpl.h	/^	typedef std::map<void *, SysHookInfo> sys_hook_dict;$/;"	t	class:HookImpl
+test_malloc	test/program/library/lib/mylib.cpp	/^void test_malloc()$/;"	f
+trampoline_func	include/HookImpl.h	/^		void	*trampoline_func;$/;"	m	struct:HookImpl::HookInfo
+type	include/ELFManager.h	/^	unsigned char	type;$/;"	m	struct:elf_symbol
+type	include/ELFManager.h	/^	unsigned long	type;$/;"	m	struct:elf_relsym
+value	include/ELFManager.h	/^	unsigned long	value;$/;"	m	struct:elf_symbol
+write	preload/disk/fault_disk_system.cpp	/^	ssize_t FAULT_(write)(int fd, const void *buf, size_t count)$/;"	f
+~BinaryFile	src/BinaryFile.cpp	/^BinaryFile::~BinaryFile()$/;"	f	class:BinaryFile
+~ELFManager	include/ELFManager.h	/^	~ELFManager() {}$/;"	f	class:ELFManager
+~FaultUnit	src/FaultUnit.cpp	/^FaultUnit::~FaultUnit()$/;"	f	class:FaultUnit
+~HookImpl	src/HookImpl.cpp	/^HookImpl::~HookImpl()$/;"	f	class:HookImpl
+~HookManager	src/HookManager.cpp	/^HookManager::~HookManager()$/;"	f	class:HookManager
+~Message	src/Message.cpp	/^Message::~Message()$/;"	f	class:Message
+~Person	test/unittest/class/lib/mylib.h	/^	~Person() {}$/;"	f	class:MyLib::Person
