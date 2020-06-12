@@ -24,4 +24,19 @@ int main()
 
 	unsigned int d = ~((~(~0U << 1)) << (0 + 1 + 4 + 1 + 4 + 1 + 1 + 1));
 	printf("~(FSP_FLAGS_MASK_ENCRYPTION):	d: ~((~(~0U << 1)) << (0 + 1 + 4 + 1 + 4 + 1 + 1 + 1))---- is :%x.\n", d);
+
+	//ut_ad(!((flags ^ space->flags) & ~(FSP_FLAGS_MASK_ENCRYPTION)));
+	//18432 ^ 2048 = 0x4000
+	unsigned int flags = 18432; 
+	unsigned int space_flags = 2048; 
+	unsigned int e = flags ^ space_flags; 
+	printf("(flags ^ space->flags):	e: ---- is :%x.\n", e);
+
+	unsigned int f = ((flags ^ space_flags) & d); 
+	printf("((flags ^ space->flags) & ~(FSP_FLAGS_MASK_ENCRYPTION)):	f: ---- is :%x.\n", f);
+
+	unsigned int g = !((flags ^ space_flags) & d); 
+	printf("!((flags ^ space->flags) & ~(FSP_FLAGS_MASK_ENCRYPTION)):	g: ---- is :%x.\n", g);
+
+
 }
