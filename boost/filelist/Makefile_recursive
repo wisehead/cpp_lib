@@ -1,0 +1,8 @@
+prefix=/usr/local
+LIBPATH=$(prefix)/lib
+
+LIBS+=$(LIBPATH)/libboost_filesystem-mt.a
+LIBS+=$(LIBPATH)/libboost_system-mt.a
+
+all:
+	g++ -O tranverse_recursive.cpp -o main.bin $(LIBS) -lboost_system 
