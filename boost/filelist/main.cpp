@@ -1,20 +1,26 @@
+/*******************************************************************************
+ *      file name: main.cpp                                               
+ *         author: Hui Chen. (c) 2020                             
+ *           mail: chenhui13@baidu.com                                        
+ *   created time: 2020/07/05-17:54:11                              
+ *  modified time: 2020/07/05-17:54:11                              
+ *******************************************************************************/
 #include <iostream>
-#include <boost/filesystem/operations.hpp>
-#include <boost/filesystem/path.hpp>
-#include <boost/filesystem/fstream.hpp>
-
+#include <boost/filesystem.hpp>
 using namespace std;
-using namespace boost;
-namespace fs = boost::filesystem;
 
-int main(void)
+int main()
 {
-  string pt = "/Users/sho/";
-  fs::path path = complete(fs::path(pt, fs::native));
-  fs::directory_iterator end;
-  for (fs::directory_iterator i(path); i!=end; i++){
-    string name = pt + i->leaf();
-    cout << name << endl;
-  }
-  return 0;
+	string targetPath="/Users/chenhui13/github/cpp_lib/boost";
+	boost::filesystem::path myPath(targetPath);
+	boost::filesystem::directory_iterator endIter;
+	for (boost::filesystem::directory_iterator iter(myPath); iter != endIter; iter++) {
+	  if (boost::filesystem::is_directory(*iter)) {
+		cout << "is dir" << endl;
+		cout << iter->path().string() << endl;
+	  } else {
+		cout << "is a file" << endl;
+		cout << iter->path().string() << endl;
+	  }
+	}
 }
