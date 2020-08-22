@@ -24,3 +24,6 @@ private:
 	Mem mem{0};
 	string name{"Group"};
 };
+
+int main()
+{}
