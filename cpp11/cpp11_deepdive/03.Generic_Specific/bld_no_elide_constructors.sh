@@ -5,4 +5,4 @@
 # Create Time: 2020/08/23-09:03:37
 #############################################################
 #!/bin/sh 
-g++ 3-3-3.cpp -fno-elide-constructors
+g++ $1 -std=c++11 -fno-elide-constructors
