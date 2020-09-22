@@ -136,30 +136,5 @@ Franklin Delano Roosevelt was re-elected president of the USA in 1936.
 
 **如例子所示，使用emplace\_back函数可以减少一次拷贝或移动构造的过程，提升容器插入数据的效率**
 
-0人点赞
 
-[C++](https://www.jianshu.com/nb/42463793)
-
-"小礼物走一走，来简书关注我"
-
-赞赏支持还没有人赞赏，支持一下
-
-[![  ](assets/1600757097-ad32491d78927adc900578a874634f26.jpg)](https://www.jianshu.com/u/cdcff6d8e571)
-
-[JasonLiThirty](https://www.jianshu.com/u/cdcff6d8e571 "JasonLiThirty")
-
-总资产2 (约0.18元)共写了2.1W字获得21个赞共28个粉丝
-
-关注
-
----------------------------------------------------
-
-
-原网址: [访问](https://www.jianshu.com/p/1fb2daf66582?native.theme=1)
-
-创建于: 2020-09-22 14:44:57
-
-目录: default
-
-标签: `www.jianshu.com`
 
