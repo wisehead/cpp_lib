@@ -1,0 +1,20 @@
+{
+  "version": "2.0",
+  "clipId": "1614045562",
+  "format": "md",
+  "title": "线程本地存储TLS(Thread Local Storage)的原理和实现——分类和原理 - 莫水千流 - 博客园",
+  "link": "https://www.cnblogs.com/zhoug2020/p/6497709.html",
+  "category": "default",
+  "tags": [],
+  "created_at": "2021-02-23 09:59:22",
+  "mainPath": "index.md",
+  "paths": [
+    "index.json",
+    "a-title_线程本地存储TLS-Thread-Local-Storage-的原理和实现——分类和原理-莫水千流-博客园",
+    "assets/1614045562-ac9d4a292e8d6311e551de835cba12f1.JPG",
+    "assets/1614045562-3212f7b914cc9773fb30bbf4656405fc.png",
+    "assets/1614045562-cb7153d1c13a5d9aef10ebab342f6f71.png",
+    "assets/1614045562-7b5efa2a115984dc24e08b36c7c7b32c.jpg",
+    "index.md"
+  ]
+}
