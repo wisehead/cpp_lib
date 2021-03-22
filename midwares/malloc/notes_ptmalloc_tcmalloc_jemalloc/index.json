@@ -1,0 +1,25 @@
+{
+  "version": "2.0",
+  "clipId": "1616382030",
+  "format": "md",
+  "title": "ptmalloc,tcmalloc和jemalloc内存分配策略研究 - 云+社区 - 腾讯云",
+  "link": "https://cloud.tencent.com/developer/article/1173720",
+  "category": "default",
+  "tags": [],
+  "created_at": "2021-03-22 11:00:30",
+  "mainPath": "index.md",
+  "paths": [
+    "index.json",
+    "a-title_ptmalloc-tcmalloc和jemalloc内存分配策略研究-云-社区-腾讯云",
+    "assets/1616382030-f27c9810980ca9bd4628df46b1055c4c.png",
+    "assets/1616382030-1fb60aecbc06e711621ee5351bd7c9fb.png",
+    "assets/1616382030-ae43a7ce0e90b3f70efcaefcf887375e.png",
+    "assets/1616382030-1df5c5ed95b60b0d5c3fcf3304e327f4.png",
+    "assets/1616382030-9d82763d33d65fbedec61e048213b81f.png",
+    "assets/1616382030-a5fed95734506b6202f34dd9f4d7c560.png",
+    "assets/1616382030-7db788656bc31ab7360beedc48dc6671.png",
+    "assets/1616382030-c99ae67ffff896e4b25f4ca657983e92.png",
+    "assets/1616382030-e0868de3c8f06129d522b4e0c9358314.png",
+    "index.md"
+  ]
+}
