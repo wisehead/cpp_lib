@@ -1,0 +1,6 @@
+unzip jemalloc-dev.zip
+mv jemalloc-dev jemalloc
+cd jemalloc
+./autogen.sh
+make -j 6
+make install
