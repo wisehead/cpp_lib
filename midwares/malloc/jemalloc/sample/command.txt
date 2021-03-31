@@ -1,0 +1,11 @@
+unzip jemalloc-dev.zip
+mv jemalloc-dev jemalloc
+cd jemalloc
+./autogen.sh
+make -j 6
+make install
+
+gcc test.c -o test -L/usr/local/lib -ljemalloc -std=c99
+echo /usr/local/lib >> /etc/ld.so.conf
+ldconfig
+
